@@ -9,6 +9,13 @@
 body{
     background: rgba(35, 3, 97, 1);
 }
+.btn-jk-connect{
+    background-color: #7000d3;
+    color: white;
+    border-radius: 50px;
+    font-weight: 700;
+    padding: 7px 15px;
+}
 .nav-link{
     font-size: 18px;
     font-weight: 500;
@@ -368,6 +375,7 @@ height: auto;
 }
 .rules .d-flex{
     justify-content: space-between;
+    padding: 60px  20px;
 }
 .jackpot{
     background-image:url(./images/Group.png) ;

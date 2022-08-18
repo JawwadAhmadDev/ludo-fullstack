@@ -1,8 +1,15 @@
-import React, { useEffect } from 'react'
-import { connectWallet } from '../../../wallet'
+import React, { useEffect , useState} from 'react'
+import { connectWallet, isWalletConnected } from '../../../wallet'
 import "./css/spaceMiner.css"
 const SpaceMiner = () => {
+
+    const [walletStatus, setWalletStatus] = useState("CONNECT WALLET")
     useEffect(() => {
+        
+    connectWallet()
+    if(isWalletConnected) {
+      setWalletStatus("WALLET CONNECTED")
+    }
         var nav = document.querySelector('.navbar');
         window.addEventListener('scroll', function () {
             if (window.pageYOffset > 100) {
@@ -47,7 +54,7 @@ const SpaceMiner = () => {
                                     </a>
                                 </li>
                             </ul>
-                            <a className="d-flex nav-link spnav-link spconnect" onClick={() => connectWallet()}>CONNECT NOW</a>
+                            <a className="d-flex nav-link spnav-link spconnect" onClick={() => connectWallet()}> {walletStatus} </a>
                         </div>
                     </div>
                 </nav>

@@ -1,12 +1,15 @@
-import React, { useEffect } from 'react'
-import { connectWallet } from '../../../wallet'
-// import "./bootstrap.css"
+import React, { useEffect , useState } from 'react'
+import { connectWallet, isWalletConnected } from '../../../wallet'
 import "./jackpot.css"
 const Jackpot = () => {
-
+const [walletStatus, setWalletStatus] = useState("CONNECT WALLET")
   useEffect(() => {
-    var nav = document.querySelector('.navbar');
+    connectWallet()
+    if(isWalletConnected) {
+      setWalletStatus("WALLET CONNECTED")
+    }
 
+    var nav = document.querySelector('.navbar');
     window.addEventListener('scroll', function () {
       if (window.pageYOffset > 100) {
         nav.classList.add('bg-dark');
@@ -35,7 +38,9 @@ const Jackpot = () => {
                 <li className="nav-item"><a className="nav-link" href="#">Contact us</a></li>
                 <li className="nav-item"><a className="nav-link" href="#"><img src="pimages/telegram.png" className="mx-2 img-fluid" width="30px" height="30px" alt="" />Telegram</a></li>
               </ul>
-              <a href="#" className="header-btn" onClick={() => connectWallet()}><img src="pimages/BTN.png" className="img-fluid" width="150px" alt="" /></a>
+              <a href="#" className="header-btn" onClick={() => connectWallet()}>
+                <button className='btn btn-jk-connect '>{walletStatus}</button>
+              </a>
             </div>
           </div>
         </nav>
@@ -162,27 +167,27 @@ const Jackpot = () => {
           <div className="container">
             <p className="text-center py-5 heading-all">The <span>Big Bang</span></p>
             <div className="row">
-              <div className="col-lg-6">
-                <div className="d-flex">
-                  <p className="divided-one me-5" />
+              <div className="col-lg-7">
+                <div className="d-flex ">
+                  <p className="divided-one mr-4" />
                   <p className="text-big-bang">A jackpot needs to have a limit, as an unlimited growth would cause it to
                     mathematically never be won. We will fix this problem by setting the hard-cap for the jackpot at 50.000
                     USD.</p>
                 </div>
                 <div className="d-flex my-5">
-                  <p className="divided-one me-5" />
+                  <p className="divided-one mr-4" />
                   <p className="text-big-bang">If the jackpot is not won by anyone, at the amount of 50.000 USD, a forced cash-out
                     takes place. This cash-out buys back half of the jackpot in one single transaction which we call The Big
                     Bang.</p>
                 </div>
                 <div className="d-flex mb-5">
-                  <p className="divided-one me-5" />
+                  <p className="divided-one mr-4" />
                   <p className="text-big-bang">The anticipation towards The Big Bang can lead to even greater FOMO, as the token
                     price will increase strongly after The Big Bang took place. At the same time, with great transactional
                     volume,</p>
                 </div>
               </div>
-              <div className="col-lg-6">
+              <div className="col-lg-5">
                 <img src="pimages/4800_3_08-[Converted].png" className="img-fluid" alt="" />
               </div>
             </div>

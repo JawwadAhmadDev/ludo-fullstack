@@ -12,7 +12,7 @@ const NavBar = () => {
         <div className="container">
           <div className="row d-flex header-area">
             <div className="logo-section flex-grow-1 d-flex align-items-center">
-              <a className="site-logo site-title" href="index.html"><img src="images/logo.png" alt="site-logo" /></a>
+              <a className="site-logo site-title" href="/"><img src="images/logo.png" alt="site-logo" /></a>
             </div>
             <button className="navbar-toggler ml-auto collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <i className="fas fa-bars" />

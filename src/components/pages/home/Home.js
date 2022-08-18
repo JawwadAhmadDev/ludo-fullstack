@@ -695,12 +695,12 @@ const Home = () => {
                 <div className="row d-flex header-area">
                   <div className="col-lg-8 col-md-8 d-flex justify-content-md-between justify-content-center align-items-center">
                     <div className="logo-section">
-                      <a className="site-logo site-title" href="index.html"><img src="images/logo.png" alt="site-logo" /></a>
+                      <a className="site-logo site-title" href="/"><img src="images/logo.png" alt="site-logo" /></a>
                     </div>
                     <ul className="navbar-nav main-menu d-flex align-items-center">
-                      <li><a href="index.html" className="active">Home</a></li>
-                      <li><a href="games.html">Games</a></li>
-                      <li><a href="tournaments.html">Tournaments</a></li>
+                      <li><a href="/" className="active">Home</a></li>
+                      <li><a href="/">Games</a></li>
+                      <li><a href="/">Tournaments</a></li>
                     </ul>
                   </div>
                   <div className="col-lg-4 col-md-4 d-flex align-items-center justify-content-center justify-content-md-end">
