@@ -1,0 +1,15 @@
+.bg-progressbar{
+    background-color: #7400d3 !important;
+}
+.flex-2-around{
+    justify-content: space-around;
+}
+.p-relative{
+    position: relative;
+}
+.progress {
+    height: 1.6rem;
+    font-weight: 900;
+    font-size: 1rem;
+    border-radius: 1.25rem;
+}
