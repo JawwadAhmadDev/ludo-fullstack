@@ -1,5 +1,4 @@
 import React from 'react'
-import { connectWallet } from '../../../wallet'
 import NavBar from '../../component/NavBar'
 
 import "./css/bootstrap.min.css"
