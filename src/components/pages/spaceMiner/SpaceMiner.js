@@ -40,7 +40,7 @@ const SpaceMiner = () => {
                                     <a className="nav-link spnav-link " href="#">Games</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link spnav-link" href="jack-pot/jackpot.html">Tournaments</a>
+                                    <a className="nav-link spnav-link" href="">Tournaments</a>
                                 </li>
                                 <li className="nav-item">
                                     <a className="nav-link spnav-link" href="#">Contact us</a>

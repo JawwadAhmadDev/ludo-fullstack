@@ -28,15 +28,15 @@ const NavBar = () => {
                   </li>
                   <li className="menu_has_children"><a href="#0">Tournaments</a>
                     <ul className="sub-menu">
-                      <li><a href="tournaments.html">Tournaments</a></li>
-                      <li><a href="tournaments-details.html">Tournaments Details</a></li>
+                      <li><a href="">Tournaments</a></li>
+                      <li><a href="">Tournaments Details</a></li>
                     </ul>
                   </li>
                   <li className="menu_has_children"><a href="#0">Pages</a>
                     <ul className="sub-menu">
-                      <li><a href="about-us.html">About Us</a></li>
-                      <li><a href="winners.html">Winners</a></li>
-                      <li><a href="faq.html">Faq</a></li>
+                      <li><a href="">About Us</a></li>
+                      <li><a href="">Winners</a></li>
+                      <li><a href="">Faq</a></li>
                     </ul>
                   </li>
                 </ul>

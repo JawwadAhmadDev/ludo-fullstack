@@ -1,6 +1,8 @@
 import React, { useEffect , useState } from 'react'
 import { connectWallet, isWalletConnected } from '../../../wallet'
+import Countdown from 'react-countdown';
 import "./jackpot.css"
+import CustomCountDown from './CountDown';
 const Jackpot = () => {
 const [walletStatus, setWalletStatus] = useState("CONNECT WALLET")
   useEffect(() => {
@@ -52,7 +54,9 @@ const [walletStatus, setWalletStatus] = useState("CONNECT WALLET")
             <div className="row">
               <div className="col-lg-5 fast-text">
                 <p className="text-white heading-one">Earn Big Today!</p>
-                <img src="pimages/number.png" className="img-fluid my-5" alt="" />
+                <div className='countdown'>
+                  <CustomCountDown/>
+                </div>
                 <div className="d-flex">
                   <p className="text-white">Big Bang Loading</p>
                   <p className="text-white">57.9%</p>
