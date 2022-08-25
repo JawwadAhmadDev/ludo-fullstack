@@ -17,8 +17,13 @@ body {
 }
 
 .countdown_timer {
+    position: relative;
     margin-bottom: 50px;
     display: flex;
+}
+.countdown_timer h4{
+    margin-left: 25px;
+    line-height: 2;
 }
 
 .countdown_timer .count_number {

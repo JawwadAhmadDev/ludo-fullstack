@@ -17,6 +17,7 @@ const CustomCountDown = () => {
                 <div className='count_number'> <p>Minute</p>  <span> {minutes}</span> </div>
                 <div className='  devider'> <span>:</span> </div>
                 <div className='count_number'> <p>Seconds</p> <span> {seconds}</span> </div>
+                <h4>Left Only</h4>
             </div>;
         }
     };
