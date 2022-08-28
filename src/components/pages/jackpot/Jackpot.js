@@ -1,16 +1,23 @@
-import React, { useEffect , useState } from 'react'
-import { connectWallet, isWalletConnected } from '../../../wallet'
-import Countdown from 'react-countdown';
+import React, { useEffect, useState } from 'react'
+import { connectWallet, getWalletAddressOrConnect, isWalletConnected, web3 } from '../../../wallet'
 import "./jackpot.css"
 import CustomCountDown from './CountDown';
-const Jackpot = () => {
-const [walletStatus, setWalletStatus] = useState("CONNECT WALLET")
-  useEffect(() => {
-    connectWallet()
-    if(isWalletConnected) {
-      setWalletStatus("WALLET CONNECTED")
-    }
+import Web3 from 'web3';
+import Contract from 'web3-eth-contract';
+import { toast } from 'react-toastify';
+import AuthRequestModal from '../../component/AuthRequestMOdal';
+import { backendURL, contractAddress } from '../../../constants';
+import axios from 'axios'
+import { fetchContract, walletShortFormer } from '../../../utils';
+import {useRecoilState} from 'recoil'
+import { walletState } from '../../../state/Wallet';
 
+
+const Jackpot = () => {
+  const [walletStateValue, setWalletState] = useRecoilState(walletState)
+  var contract;
+
+  useEffect(async () => { 
     var nav = document.querySelector('.navbar');
     window.addEventListener('scroll', function () {
       if (window.pageYOffset > 100) {
@@ -19,7 +26,37 @@ const [walletStatus, setWalletStatus] = useState("CONNECT WALLET")
         nav.classList.remove('bg-dark', 'shadow')
       }
     });
+
   }, [])
+
+  async function checkIsAuthorised() {
+    var tx = await contract.methods.isAuthorized(walletStateValue.userWallet).call();
+    return tx
+  }
+
+  const fundJackpot = async (e) => {
+    contract = await fetchContract()
+    var isAuthorised = await checkIsAuthorised(walletStateValue.userWallet);
+    if (isAuthorised) {
+      var bnbAmount = 0.1
+      const fundedjackpot = await contract.methods.fundJackpot(0).send({ from: walletStateValue.userWallet, value: web3.utils.toWei(bnbAmount.toString()) })
+      toast.success("Jackpot funding success !!");
+      console.log(fundedjackpot) 
+    } else { 
+      axios.get(`${backendURL}/api/wallet/find/${walletStateValue.userWallet}`)
+        .then(res => {
+          if (res.data?.length > 0) {
+            toast.success("Your authorization  request still in pending , please wait !")
+          } else {
+            toast.error("You are not Authorized, please contact with  Owner to get Authorized")
+            document.getElementById('req_modal').click()
+          }
+        })
+        .catch(err => {
+          console.log("err response", err.response)
+        })
+    }
+  };
 
 
   return (
@@ -34,14 +71,19 @@ const [walletStatus, setWalletStatus] = useState("CONNECT WALLET")
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
               <ul className="navbar-nav m-auto mb-2 mb-lg-0">
                 <li className="nav-item"><a className="nav-link" href="/">Home</a></li>
-                <li className="nav-item"><a className="nav-link" href="#">About</a></li>
+                {
+                  walletStateValue.isOwner ?
+                    <li className="nav-item"><a className="nav-link" href="/dashboard">Dashboard</a></li>
+                    : ''
+                }
+                {/* <li className="nav-item"><a className="nav-link" href="#">About</a></li> */}
                 <li className="nav-item"><a className="nav-link" href="/space-miner">Space Miner</a></li>
                 <li className="nav-item"><a className="nav-link" href="#">Tournaments</a></li>
                 <li className="nav-item"><a className="nav-link" href="#">Contact us</a></li>
                 <li className="nav-item"><a className="nav-link" href="#"><img src="pimages/telegram.png" className="mx-2 img-fluid" width="30px" height="30px" alt="" />Telegram</a></li>
               </ul>
               <a href="#" className="header-btn" onClick={() => connectWallet()}>
-                <button className='btn btn-jk-connect '>{walletStatus}</button>
+                <button className='btn btn-jk-connect '>{walletStateValue.isWalletConnected ? walletShortFormer(walletStateValue.userWallet):"Connect Wallet"}</button>
               </a>
             </div>
           </div>
@@ -55,7 +97,8 @@ const [walletStatus, setWalletStatus] = useState("CONNECT WALLET")
               <div className="col-lg-5 fast-text">
                 <p className="text-white heading-one">Earn Big Today!</p>
                 <div className='countdown'>
-                  <CustomCountDown/>
+
+                  <CustomCountDown />
                 </div>
                 <div className="d-flex">
                   <p className="text-white">Big Bang Loading</p>
@@ -64,14 +107,17 @@ const [walletStatus, setWalletStatus] = useState("CONNECT WALLET")
                 <div className="progress">
                   <div className="progress-bar progress-bar-striped" role="progressbar" style={{ width: '57.9%' }} aria-valuenow="57.9" aria-valuemin={0} aria-valuemax={100} />
                 </div>
-                <a href="#"><img src="pimages/BTN-2.png" className="img-fluid mt-5 " alt=" " /></a>
+                <span className='c_pointer' onClick={() => fundJackpot()}  ><img src="pimages/BTN-2.png" className="img-fluid mt-5 " /></span>
+                <AuthRequestModal walletAddress={walletStateValue.userWallet} />
               </div>
               <div className=" col-lg-2">
               </div>
               <div className="col-lg-5">
                 <form className='jkform' action>
                   <p className="heading-two">Buy Now</p>
-                  <label htmlFor><img src="pimages/image 5.png" className="img-fluid me-3 my-3" alt="" />BNB <i className="fa-solid fa-caret-down" /></label> <br />
+                  <label >
+                    <img src="pimages/image 5.png" className="img-fluid me-3 my-3" alt="Buy Now " />BNB <i className="fa-solid fa-caret-down" />
+                  </label> <br />
                   <input className='input' type="text" placeholder={25} />
                   <div className="d-flex my-3">
                     <p>≈ $ 6.21 k</p>

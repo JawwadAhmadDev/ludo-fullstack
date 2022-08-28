@@ -35,7 +35,6 @@ abstract contract Context {
     function _msgSender() internal view virtual returns (address) {
         return msg.sender;
     }
-
     function _msgData() internal view virtual returns (bytes calldata) {
         this; // silence state mutability warning without generating bytecode - see https://github.com/ethereum/solidity/issues/2691
         return msg.data;
@@ -1658,7 +1657,6 @@ contract Ludo is Context, IERC20, Ownable {
     uint256 private constant MAX_PCT = 10000;
     uint256 private constant BNB_DECIMALS = 18;
     uint256 private constant USDT_DECIMALS = 18;
-    // address private constant USDT = 0x55d398326f99059fF775485246999027B3197955;
     address private constant USDT = 0x337610d27c682E347C9cD60BD4b3b107C9d34dDd;
     address private constant DEAD = 0x000000000000000000000000000000000000dEaD;
 

@@ -1,5 +1,4 @@
-import jwtDecode from "jwt-decode";
-import React, { useEffect, useState } from "react"; 
+import React, { useEffect } from "react"; 
 import { connectWallet } from "../../wallet";
 
 const NavBar = () => {
@@ -28,15 +27,15 @@ const NavBar = () => {
                   </li>
                   <li className="menu_has_children"><a href="#0">Tournaments</a>
                     <ul className="sub-menu">
-                      <li><a href="">Tournaments</a></li>
-                      <li><a href="">Tournaments Details</a></li>
+                      <li><a href="/">Tournaments</a></li>
+                      <li><a href="/">Tournaments Details</a></li>
                     </ul>
                   </li>
                   <li className="menu_has_children"><a href="#0">Pages</a>
                     <ul className="sub-menu">
-                      <li><a href="">About Us</a></li>
-                      <li><a href="">Winners</a></li>
-                      <li><a href="">Faq</a></li>
+                      <li><a href="/">About Us</a></li>
+                      <li><a href="/">Winners</a></li>
+                      <li><a href="/">Faq</a></li>
                     </ul>
                   </li>
                 </ul>
@@ -66,7 +65,7 @@ const NavBar = () => {
                         </div>
                         <div className="modal-body">
                           <h5 className="welcome">Welcome back</h5>
-                          <p>Not a member? <a href="javascript:void(0)">REGISTER</a></p>
+                          <p>Not a member? <a href="/">REGISTER</a></p>
                           <div className="form-area">
                             <form action="#">
                               <div className="form-group">
@@ -78,7 +77,7 @@ const NavBar = () => {
                                 <input className="form-control" placeholder="Password" type="password" />
                               </div>
                               <div className="form-group d-flex justify-content-end">
-                                <label><a href="javascript:void(0)">Not a member?</a></label>
+                                <label><a href="/">Not a member?</a></label>
                               </div>
                               <div className="form-group">
                                 <button type="submit" className="cmn-btn cmn-btn-alt"> Sign
@@ -88,10 +87,10 @@ const NavBar = () => {
                             <div className="reg-with">
                               <p>Register in directly with</p>
                               <div className="social-area d-flex justify-content-center">
-                                <a href="javascript:void(0)"><img src="images/twitter.png" alt="image" /></a>
-                                <a href="javascript:void(0)"><img src="images/facebook.png" alt="image" /></a>
-                                <a href="javascript:void(0)"><img src="images/linkedin.png" alt="image" /></a>
-                                <a href="javascript:void(0)"><img src="images/google.png" alt="image" /></a>
+                                <a href="/"><img src="images/twitter.png" alt="image" /></a>
+                                <a href="/"><img src="images/facebook.png" alt="image" /></a>
+                                <a href="/"><img src="images/linkedin.png" alt="image" /></a>
+                                <a href="/"><img src="images/google.png" alt="image" /></a>
                               </div>
                             </div>
                           </div>
@@ -118,7 +117,7 @@ const NavBar = () => {
                         </div>
                         <div className="modal-body">
                           <h5>Get started in a minute!</h5>
-                          <p>Already have a account? <a href="javascript:void(0)">Login</a></p>
+                          <p>Already have a account? <a href="/">Login</a></p>
                           <div className="form-area">
                             <form action="#">
                               <div className="form-group">
@@ -146,10 +145,10 @@ const NavBar = () => {
                             <div className="reg-with">
                               <p>Register in directly with</p>
                               <div className="social-area d-flex justify-content-center">
-                                <a href="javascript:void(0)"><img src="images/twitter.png" alt="image" /></a>
-                                <a href="javascript:void(0)"><img src="images/facebook.png" alt="image" /></a>
-                                <a href="javascript:void(0)"><img src="images/linkedin.png" alt="image" /></a>
-                                <a href="javascript:void(0)"><img src="images/google.png" alt="image" /></a>
+                                <a href="/"><img src="images/twitter.png" alt="image" /></a>
+                                <a href="/"><img src="images/facebook.png" alt="image" /></a>
+                                <a href="/"><img src="images/linkedin.png" alt="image" /></a>
+                                <a href="/"><img src="images/google.png" alt="image" /></a>
                               </div>
                             </div>
                           </div>

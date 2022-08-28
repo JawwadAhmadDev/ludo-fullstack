@@ -30,7 +30,8 @@ export default function TicketCard({ details, id }) {
       window.location.reload()
     }, 1000);
 
-  };  return (
+  };  
+  return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
         component="img"

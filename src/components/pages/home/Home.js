@@ -50,7 +50,7 @@ const Home = () => {
   return (
     <div className='home_page'>
       <div className="preloader" id="preloader" />
-      <a href="javascript:void(0)" className="scrollToTop"><i className="fas fa-angle-double-up" /></a>
+      <a href="" className="scrollToTop"><i className="fas fa-angle-double-up" /></a>
       <div>
         <NavBar />
       </div>
@@ -93,7 +93,7 @@ const Home = () => {
                                     <input className="form-control" placeholder="Password" type="password" />
                                   </div>
                                   <div className="form-group d-flex justify-content-end">
-                                    <label><a href="javascript:void(0)">Not a member?</a></label>
+                                    <label><a href="">Not a member?</a></label>
                                   </div>
                                   <div className="form-group">
                                     <button type="submit" className="cmn-btn cmn-btn-alt"> Sign
@@ -103,10 +103,10 @@ const Home = () => {
                                 <div className="reg-with">
                                   <p className='tw' >Register in directly with</p>
                                   <div className="social-area d-flex justify-content-center">
-                                    <a href="javascript:void(0)"><img src="images/twitter.png" alt="image" /></a>
-                                    <a href="javascript:void(0)"><img src="images/facebook.png" alt="image" /></a>
-                                    <a href="javascript:void(0)"><img src="images/linkedin.png" alt="image" /></a>
-                                    <a href="javascript:void(0)"><img src="images/google.png" alt="image" /></a>
+                                    <a href=""><img src="images/twitter.png" alt="image" /></a>
+                                    <a href=""><img src="images/facebook.png" alt="image" /></a>
+                                    <a href=""><img src="images/linkedin.png" alt="image" /></a>
+                                    <a href=""><img src="images/google.png" alt="image" /></a>
                                   </div>
                                 </div>
                               </div>
@@ -276,7 +276,7 @@ const Home = () => {
                           </div>
                           <div className="modal-body">
                             <h5 className="welcome">Welcome back</h5>
-                            <p className='tw' >Not a member? <a href="javascript:void(0)">REGISTER</a></p>
+                            <p className='tw' >Not a member? <a href="">REGISTER</a></p>
                             <div className="form-area">
                               <form action="#">
                                 <div className="form-group">
@@ -288,7 +288,7 @@ const Home = () => {
                                   <input className="form-control" placeholder="Password" type="password" />
                                 </div>
                                 <div className="form-group d-flex justify-content-end">
-                                  <label><a href="javascript:void(0)">Not a member?</a></label>
+                                  <label><a href="">Not a member?</a></label>
                                 </div>
                                 <div className="form-group">
                                   <button type="submit" className="cmn-btn cmn-btn-alt"> Sign
@@ -298,10 +298,10 @@ const Home = () => {
                               <div className="reg-with">
                                 <p className='tw' >Register in directly with</p>
                                 <div className="social-area d-flex justify-content-center">
-                                  <a href="javascript:void(0)"><img src="images/twitter.png" alt="image" /></a>
-                                  <a href="javascript:void(0)"><img src="images/facebook.png" alt="image" /></a>
-                                  <a href="javascript:void(0)"><img src="images/linkedin.png" alt="image" /></a>
-                                  <a href="javascript:void(0)"><img src="images/google.png" alt="image" /></a>
+                                  <a href=""><img src="images/twitter.png" alt="image" /></a>
+                                  <a href=""><img src="images/facebook.png" alt="image" /></a>
+                                  <a href=""><img src="images/linkedin.png" alt="image" /></a>
+                                  <a href=""><img src="images/google.png" alt="image" /></a>
                                 </div>
                               </div>
                             </div>
@@ -326,7 +326,7 @@ const Home = () => {
                     <div className="single-item d-flex justify-content-between align-items-center">
                       <div className="left-area d-flex align-items-center">
                         <img src="images/win-1.png" className="pos" alt="image" />
-                        <a href="javascript:void(0)" className="name-area d-flex align-items-center">
+                        <a href="" className="name-area d-flex align-items-center">
                           <img src="images/user-1.png" alt="image" />
                           <h6>Bessie Cooper</h6>
                         </a>
@@ -341,7 +341,7 @@ const Home = () => {
                     <div className="single-item d-flex justify-content-between align-items-center">
                       <div className="left-area d-flex align-items-center">
                         <img src="images/win-2.png" className="pos" alt="image" />
-                        <a href="javascript:void(0)" className="name-area d-flex align-items-center">
+                        <a href="" className="name-area d-flex align-items-center">
                           <img src="images/user-2.png" alt="image" />
                           <h6>Jerome Bell</h6>
                         </a>
@@ -356,7 +356,7 @@ const Home = () => {
                     <div className="single-item d-flex justify-content-between align-items-center">
                       <div className="left-area d-flex align-items-center">
                         <img src="images/win-3.png" className="pos" alt="image" />
-                        <a href="javascript:void(0)" className="name-area d-flex align-items-center">
+                        <a href="" className="name-area d-flex align-items-center">
                           <img src="images/user-3.png" alt="image" />
                           <h6>Darrell Steward</h6>
                         </a>
@@ -457,42 +457,42 @@ const Home = () => {
                           </thead>
                           <tbody>
                             <tr>
-                              <th scope="row"><a href="javascript:void(0)"><img src="images/game-icon-1.png" alt="image" />Fishing Disco</a></th>
+                              <th scope="row"><a href=""><img src="images/game-icon-1.png" alt="image" />Fishing Disco</a></th>
                               <td>Bessie Cooper</td>
                               <td>30320267096</td>
                               <td>0.70X</td>
                               <td><img src="images/table-icon-1.png" alt="image" />+ 0.00312150</td>
                             </tr>
                             <tr>
-                              <th scope="row"><a href="javascript:void(0)"><img src="images/game-icon-2.png" alt="image" />Ninjax</a></th>
+                              <th scope="row"><a href=""><img src="images/game-icon-2.png" alt="image" />Ninjax</a></th>
                               <td>Eleanor Pena</td>
                               <td>30320267096</td>
                               <td>2.21X</td>
                               <td><img src="images/table-icon-2.png" alt="image" />+ 0.00312150</td>
                             </tr>
                             <tr>
-                              <th scope="row"><a href="javascript:void(0)"><img src="images/game-icon-3.png" alt="image" />Dragons Gate</a></th>
+                              <th scope="row"><a href=""><img src="images/game-icon-3.png" alt="image" />Dragons Gate</a></th>
                               <td>Cody Fisher</td>
                               <td>30320267096</td>
                               <td>3.01X</td>
                               <td><img src="images/table-icon-3.png" alt="image" />+ 0.00312150</td>
                             </tr>
                             <tr>
-                              <th scope="row"><a href="javascript:void(0)"><img src="images/game-icon-4.png" alt="image" />King of Glory</a></th>
+                              <th scope="row"><a href=""><img src="images/game-icon-4.png" alt="image" />King of Glory</a></th>
                               <td>Arlene McCoy</td>
                               <td>30320267096</td>
                               <td>1.11X</td>
                               <td><img src="images/table-icon-4.png" alt="image" />- 0.00312150</td>
                             </tr>
                             <tr>
-                              <th scope="row"><a href="javascript:void(0)"><img src="images/game-icon-5.png" alt="image" />Dice</a></th>
+                              <th scope="row"><a href=""><img src="images/game-icon-5.png" alt="image" />Dice</a></th>
                               <td>Leslie Alexander</td>
                               <td>30320267096</td>
                               <td>0.00X</td>
                               <td><img src="images/table-icon-5.png" alt="image" />+ 0.00312150</td>
                             </tr>
                             <tr>
-                              <th scope="row"><a href="javascript:void(0)"><img src="images/game-icon-6.png" alt="image" />League Of Legends</a></th>
+                              <th scope="row"><a href=""><img src="images/game-icon-6.png" alt="image" />League Of Legends</a></th>
                               <td>Theresa Webb</td>
                               <td>30320267096</td>
                               <td>3.19X</td>
@@ -516,42 +516,42 @@ const Home = () => {
                           </thead>
                           <tbody>
                             <tr>
-                              <th scope="row"><a href="javascript:void(0)"><img src="images/game-icon-1.png" alt="image" />Fishing Disco</a></th>
+                              <th scope="row"><a href=""><img src="images/game-icon-1.png" alt="image" />Fishing Disco</a></th>
                               <td>Bessie Cooper</td>
                               <td>30320267096</td>
                               <td>0.70X</td>
                               <td><img src="images/table-icon-1.png" alt="image" />+ 0.00312150</td>
                             </tr>
                             <tr>
-                              <th scope="row"><a href="javascript:void(0)"><img src="images/game-icon-2.png" alt="image" />Ninjax</a></th>
+                              <th scope="row"><a href=""><img src="images/game-icon-2.png" alt="image" />Ninjax</a></th>
                               <td>Eleanor Pena</td>
                               <td>30320267096</td>
                               <td>2.21X</td>
                               <td><img src="images/table-icon-2.png" alt="image" />+ 0.00312150</td>
                             </tr>
                             <tr>
-                              <th scope="row"><a href="javascript:void(0)"><img src="images/game-icon-3.png" alt="image" />Dragons Gate</a></th>
+                              <th scope="row"><a href=""><img src="images/game-icon-3.png" alt="image" />Dragons Gate</a></th>
                               <td>Cody Fisher</td>
                               <td>30320267096</td>
                               <td>3.01X</td>
                               <td><img src="images/table-icon-3.png" alt="image" />+ 0.00312150</td>
                             </tr>
                             <tr>
-                              <th scope="row"><a href="javascript:void(0)"><img src="images/game-icon-4.png" alt="image" />King of Glory</a></th>
+                              <th scope="row"><a href=""><img src="images/game-icon-4.png" alt="image" />King of Glory</a></th>
                               <td>Arlene McCoy</td>
                               <td>30320267096</td>
                               <td>1.11X</td>
                               <td><img src="images/table-icon-4.png" alt="image" />- 0.00312150</td>
                             </tr>
                             <tr>
-                              <th scope="row"><a href="javascript:void(0)"><img src="images/game-icon-5.png" alt="image" />Dice</a></th>
+                              <th scope="row"><a href=""><img src="images/game-icon-5.png" alt="image" />Dice</a></th>
                               <td>Leslie Alexander</td>
                               <td>30320267096</td>
                               <td>0.00X</td>
                               <td><img src="images/table-icon-5.png" alt="image" />+ 0.00312150</td>
                             </tr>
                             <tr>
-                              <th scope="row"><a href="javascript:void(0)"><img src="images/game-icon-6.png" alt="image" />League Of Legends</a></th>
+                              <th scope="row"><a href=""><img src="images/game-icon-6.png" alt="image" />League Of Legends</a></th>
                               <td>Theresa Webb</td>
                               <td>30320267096</td>
                               <td>3.19X</td>
@@ -742,10 +742,10 @@ const Home = () => {
                   </div>
                   <div className="col-lg-4 col-md-4 d-flex align-items-center justify-content-center justify-content-md-end">
                     <div className="social-area d-flex">
-                      <a href="javascript:void(0)"><img src="images/twitter.png" alt="image" /></a>
-                      <a href="javascript:void(0)"><img src="images/facebook.png" alt="image" /></a>
-                      <a href="javascript:void(0)"><img src="images/linkedin.png" alt="image" /></a>
-                      <a href="javascript:void(0)"><img src="images/google.png" alt="image" /></a>
+                      <a href=""><img src="images/twitter.png" alt="image" /></a>
+                      <a href=""><img src="images/facebook.png" alt="image" /></a>
+                      <a href=""><img src="images/linkedin.png" alt="image" /></a>
+                      <a href=""><img src="images/google.png" alt="image" /></a>
                     </div>
                   </div>
                 </div>
