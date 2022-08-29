@@ -1,3 +1,8 @@
+
+import Web3 from 'web3';
+import Contract from 'web3-eth-contract';
+const abi = require('./abi.json')
+
 export const NETWORKS = {
     1: {
         name: "Ethereum",
@@ -107,6 +112,17 @@ export const getBaseURL = () => {
     return "https://nftcomponents.vercel.app"
 }
 
-export const backendURL="http://localhost:5000"
 export const contractAddress="0x86C59e5A5EE43033d310a8Cf107196202A52a846"
 // export const backendURL="https://ludo-ol.herokuapp.com"
+export const backendURL = "http://localhost:5000";
+export const MAX_PCT= 10000;
+export const  LudoContractRef = async()=> {
+    if (typeof window.web3 !== 'undefined') {
+        window.web3 = new Web3(window.web3.currentProvider)
+    } else {
+        var web3Provider = new Web3.providers.HttpProvider("https://data-seed-prebsc-1-s1.binance.org:8545/")
+        window.web3 = new Web3(web3Provider)
+    }
+    Contract.setProvider(window.web3.currentProvider);
+    return await new Contract(abi, contractAddress);
+}

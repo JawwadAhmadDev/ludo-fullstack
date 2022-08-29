@@ -3,6 +3,7 @@ import {
     BrowserRouter as Router,
     Routes,
     Route,
+    
 } from "react-router-dom";
 // pages
 import 'react-toastify/dist/ReactToastify.css';
@@ -31,6 +32,9 @@ export const App = () => {
             isOwner = false
         }
         setWalletState({ ...walletStateValue, ownerWallet: ownerWallet, userWallet: userWallet, isOwner: isOwner, isWalletConnected: true })
+          window.ethereum.on('accountsChanged', function(account) {
+            window.location.reload()
+          })
         return
     }, [])
     return (

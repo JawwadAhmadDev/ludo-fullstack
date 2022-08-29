@@ -27,6 +27,7 @@ import TradingStatus from '../../component/TradingStatus';
 import ExcludeFromFee from '../../component/ExcludeFromFee';
 import ExcludeFromSwapAndLiquify from '../../component/ExcludeFromFeeSwapAndLiquify';
 import SwapAndLiquify from '../../component/SwapAndLiquify';
+import SetBuyFee from '../../component/SetBuyFee';
 
 
 
@@ -232,7 +233,55 @@ function DashboardContent() {
                   <ExcludeFromSwapAndLiquify />
                 </Paper>
               </Grid>
-              {/* Recent Orders */}
+            </Grid>
+            <Grid container spacing={3} marginTop={2} marginBottom={2}>
+              <Grid item xs={12} md={4} lg={3}>
+                <Paper
+                  sx={{
+                    p: 2,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    height: 240,
+                  }}
+                >
+                  <SetBuyFee />
+                </Paper>
+              </Grid>  <Grid item xs={12} md={4} lg={3}>
+                <Paper
+                  sx={{
+                    p: 2,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    height: 240,
+                  }}
+                >
+                  <TradingStatus />
+                </Paper>
+              </Grid>  <Grid item xs={12} md={4} lg={3}>
+                <Paper
+                  sx={{
+                    p: 2,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    height: 240,
+                  }}
+                >
+                  <TradingStatus />
+                </Paper>
+              </Grid>  <Grid item xs={12} md={4} lg={3}>
+                <Paper
+                  sx={{
+                    p: 2,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    height: 240,
+                  }}
+                >
+                  <TradingStatus />
+                </Paper>
+              </Grid>
+            </Grid>
+            <Grid container spacing={3}>
               <Grid item xs={12}>
                 <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
                   <Requests />
@@ -242,7 +291,7 @@ function DashboardContent() {
           </Container>
         </Box>
       </Box>
-    </ThemeProvider>
+    </ThemeProvider >
   );
 }
 
