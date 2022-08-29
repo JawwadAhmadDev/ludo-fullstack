@@ -28,12 +28,23 @@ export default function TradingStatus() {
     <React.Fragment>
       <TransectionPendingModal open={open} setOpen={setOpen} />
       <Title>Trading Status</Title>
-      <p>
-        Trading currently <span className='badge badge-primary text-white'>Disabled</span> , Click below to Enable Trading  .
-      </p>
-      <div>
-        <Button variant='outlined' color='secondary' onClick={e => { enableTrading() }}>Enable</Button>
-      </div>
+      {
+        walletStateValue.isLoaded ?
+          <div>
+            {
+              walletStateValue.tradingOpen ?
+                <Button variant='outlined' color='secondary' >Enabled</Button>
+                :
+                <Button variant='outlined' color='secondary' onClick={e => { enableTrading() }}>Enable</Button>
+            }
+            <p className='mt-3'>
+              NOTE: Trading currently <span className='badge badge-primary text-white'>{walletStateValue.tradingOpen ? "Enabled" : "Disabled"}</span> , Click below to Enable Trading  .
+            </p>
+          </div> :
+          <div style={{ textAlign: 'center', overflow: 'hidden' }}>
+            <img style={{ width: '70%' }} src="/images/loadinga.gif" />
+          </div>
+      }
     </React.Fragment>
   );
 }

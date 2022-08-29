@@ -3,7 +3,7 @@ import {
     BrowserRouter as Router,
     Routes,
     Route,
-    
+
 } from "react-router-dom";
 // pages
 import 'react-toastify/dist/ReactToastify.css';
@@ -15,7 +15,7 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 import { getWalletAddressOrConnect } from "../wallet";
 import { fetchContract, walletShortFormer } from "../utils";
 import { useRecoilState } from 'recoil'
-import {  walletState } from "../state/Wallet";
+import { walletState } from "../state/Wallet";
 
 export const App = () => {
     const [walletStateValue, setWalletState] = useRecoilState(walletState)
@@ -24,16 +24,28 @@ export const App = () => {
         var userWallet = await getWalletAddressOrConnect()
         var contract = await fetchContract()
         var ownerWallet = await contract.methods.owner().call()
+        var swapandLiquify = await contract.methods.swapAndLiquifyEnabled().call()
+        var tradingOpen= await contract.methods.tradingOpen().call()
         var isOwner = false
         if (ownerWallet.toLowerCase().split(' ')[0] == userWallet.toLowerCase().split(' ')[0]) {
             isOwner = true
         } else {
             isOwner = false
         }
-        setWalletState({ ...walletStateValue, ownerWallet: ownerWallet, userWallet: userWallet, isOwner: isOwner, isWalletConnected: true })
-          window.ethereum.on('accountsChanged', function(account) {
+
+        setWalletState({
+            ...walletStateValue,
+            ownerWallet: ownerWallet,
+            userWallet: userWallet,
+            isOwner: isOwner,
+            isWalletConnected: true,
+            swapAndLiquify: swapandLiquify,
+            tradingOpen:tradingOpen,
+            isLoaded:true
+        })
+        window.ethereum.on('accountsChanged', function (account) {
             window.location.reload()
-          })
+        })
         return
     }, [])
     return (
