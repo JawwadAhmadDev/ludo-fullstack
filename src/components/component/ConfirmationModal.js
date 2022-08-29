@@ -1,4 +1,4 @@
-import * as React from 'react';
+import  React,{useState} from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
@@ -28,6 +28,7 @@ const style = {
 export default function ConfirmationModal({ id, name, wallet, details }) {
     const [open, setOpen] = React.useState(false);
     const [walletStateValue, setWalletState] = useRecoilState(walletState)
+    const [isTxPending, setIsTxPending] = useState(false)
     const handleOpen = () => {
         setOpen(true);
     };
@@ -36,24 +37,32 @@ export default function ConfirmationModal({ id, name, wallet, details }) {
     };
 
     const processRequest = async () => {
-        toast.info("Please Wait , Transection  Mining !")
-        setOpen(false)
+        setIsTxPending(true)
         var contract = await fetchContract()
-        var tx = await contract.methods.authorize(wallet).send({ from: walletStateValue.userWallet })
-        console.log(tx);
-        toast("Authorization completed in Smart contract ")
-        axios.put(`${backendURL}/api/wallet/${wallet}`)
-            .then(res => {
-                console.log(res)
-                toast("Authorization completed in Server Side ")
-                toast.info("Page will Refrash soon  , to be updated  . ")
-                setTimeout(() => {
-                    window.location.reload()
-                }, 3000);
+        contract.methods.authorize(wallet).send({ from: walletStateValue.userWallet })
+            .then(tx => {
+                console.log(tx);
+                toast("Authorization completed in Smart contract ")
+                axios.put(`${backendURL}/api/wallet/${wallet}`)
+                    .then(res => {
+                        console.log(res)
+                        toast("Authorization completed in Server Side ")
+                        toast.info("Page will Refrash soon  , to be updated  . ")
+                        setOpen(false)
+                        isTxPending(false)
+                        setTimeout(() => {
+                            window.location.reload()
+                        }, 3000);
+                    })
+                    .catch(err => {
+                        console.log(err)
+                        toast.error("Server Error !!")
+                    })
             })
             .catch(err => {
-                console.log(err)
-                toast.error("Server Error !!")
+                toast.error(err.message)
+                setOpen(false)
+                isTxPending(false)
             })
     }
 
@@ -67,12 +76,21 @@ export default function ConfirmationModal({ id, name, wallet, details }) {
                 aria-describedby="parent-modal-description"
             >
                 <Box sx={{ ...style }}>
-                    <h4 className='alert  text-center' style={{ color: 'black' }}> Authorizatoin Request </h4>
-                    <WarningAlert />
-                    <p className='mt-5' style={{ textDecoration: 'italic' }}>Note: After doing this action  , ({wallet}) this user able to  invest in jackpot as  Authorized user.</p>
-                    <div className='text-right' >
-                        <Button variant='contained' color='secondary' onClick={e => { processRequest() }} >Confirm</Button>
-                    </div>
+                    {
+                        isTxPending ?
+                            <div>
+                                <h4 className='alert  text-center' style={{ color: 'black' }}> Request Pending </h4>
+                                <img style={{ width: "100%" }} src='/images/loading.gif' />
+                            </div> :
+                            <div>
+                                <h4 className='alert  text-center' style={{ color: 'black' }}> Authorizatoin Request </h4>
+                                <WarningAlert />
+                                <p className='mt-5' style={{ textDecoration: 'italic' }}>Note: After doing this action  , ({wallet}) this user able to  invest in jackpot as  Authorized user.</p>
+                                <div className='text-right' >
+                                    <Button variant='contained' color='secondary' onClick={e => { processRequest() }} >Confirm</Button>
+                                </div>
+                            </div>
+                    }
                 </Box>
             </Modal>
         </div>

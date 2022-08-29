@@ -1,11 +1,10 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
 import { Input } from 'reactstrap';
-import { useState } from 'react';
 import axios from 'axios';
-import { backendURL, MAX_PCT } from '../../constants';
+import { backendURL, fromWei, toWei, JACKPOT_BUYER_SHARE_MAX, JACKPOT_BUYER_SHARE_MIN, JACKPOT_CASHOUT_MAX, JACKPOT_CASHOUT_MIN, JACKPOT_MINBUY_MAX, JACKPOT_MINBUY_MIN, MAX_PCT } from '../../constants';
 import { toast } from 'react-toastify'
 import { fetchContract } from '../../utils';
 import { useRecoilState } from 'recoil'
@@ -26,14 +25,17 @@ const style = {
 };
 
 
-export default function SetBuyFeeModal() {
-    const [liquidityFee, setLiquidityFee] = useState()
-    const [marketingFee, setMarketingFee] = useState()
-    const [developmentFee, setDevelopmentFee] = useState()
-    const [jackpotFee, setJackpotFee] = useState()
+export default function SetjackpotFeaturesModal() {
     const [open, setOpen] = React.useState(false);
     const [walletStateValue, setWalletState] = useRecoilState(walletState)
     const [isPendingTx, setIsPendingTx] = useState(false)
+
+    const [cashout, setCashout] = useState()
+    const [buyerShare, setBuyerShare] = useState()
+    const [minimumBuy, setMinimumBuy] = useState()
+
+
+
     const handleOpen = () => {
         setOpen(true);
     };
@@ -48,23 +50,27 @@ export default function SetBuyFeeModal() {
         var contract = await fetchContract()
         setIsPendingTx(true)
         toast.info("Transection Submitted with given informations")
-        contract.methods.setBuyFees(pctToMaxPCT(liquidityFee), pctToMaxPCT(marketingFee), pctToMaxPCT(developmentFee), pctToMaxPCT(jackpotFee)).send({ from: walletStateValue.userWallet })
+        console.log(toWei(cashout), toWei(buyerShare), toWei(minimumBuy))
+        contract.methods.setJackpotFeatures(toWei(cashout), toWei(buyerShare), toWei(minimumBuy)).send({ from: walletStateValue.userWallet })
             .then(tx => {
+
                 console.log(tx)
                 setIsPendingTx(false)
                 setOpen(false)
                 toast(<a target="_blank" style={{ color: 'gray' }} href={`https://testnet.bscscan.com/tx/${tx.transactionHash}`}>Buy fee set Completed .🔗 View On BSC Scan !!</a>, { autoClose: false })
             })
             .catch(err => {
+                console.log(err)
                 toast.error(err.message)
-                setIsPendingTx(false)
                 setOpen(false)
+                setIsPendingTx(false)
             })
+        return
     }
 
     return (
         <div>
-            <Button variant='outlined' color='secondary' onClick={handleOpen}>Set Fee</Button>
+            <Button variant='outlined' color='secondary' onClick={handleOpen}>Set Features</Button>
             <Modal
                 open={open}
                 onClose={handleClose}
@@ -81,18 +87,16 @@ export default function SetBuyFeeModal() {
 
                             </div> :
                             <div>
-                                <h4 className='alert  text-center' style={{ color: 'black' }}> Set Buy Fee</h4>
+                                <h4 className='alert  text-center' style={{ color: 'black' }}> Set Jackpot Features</h4>
                                 <form onSubmit={e => submitFee(e)} className='buy_form form'>
-                                    <label className=" buy_form_label mt-2">Liquidity (%)</label>
-                                    <Input required placeholder='Liquidity Fee' onChange={e => setLiquidityFee(e.target.value)} />
-                                    <label className=" buy_form_label mt-2">Marketing (%)</label>
-                                    <Input required placeholder='Marketing Fee' onChange={e => setMarketingFee(e.target.value)} />
-                                    <label className=" buy_form_label mt-2">Development (%)</label>
-                                    <Input required placeholder='Development Fee' onChange={e => setDevelopmentFee(e.target.value)} />
-                                    <label className=" buy_form_label mt-2">Jackpot (%)</label>
-                                    <Input required placeholder='Jackpot Fee' onChange={e => setJackpotFee(e.target.value)} />
+                                    <label className=" buy_form_label mt-2">Cashout ({`${JACKPOT_CASHOUT_MIN} - ${JACKPOT_CASHOUT_MAX}`}) </label>
+                                    <Input type='number' min={JACKPOT_CASHOUT_MIN} max={JACKPOT_CASHOUT_MAX} required placeholder='Cash Out' onChange={e => setCashout(e.target.value)} />
+                                    <label className=" buy_form_label mt-2"> Buyer Share ({`${JACKPOT_BUYER_SHARE_MIN} -${JACKPOT_BUYER_SHARE_MAX}`}) </label>
+                                    <Input type='number' min={JACKPOT_BUYER_SHARE_MIN} max={JACKPOT_BUYER_SHARE_MAX} required placeholder='Buyer Share' onChange={e => setBuyerShare(e.target.value)} />
+                                    <label className=" buy_form_label mt-2">Minimum Buy ({`${fromWei(JACKPOT_MINBUY_MIN)}-${fromWei(JACKPOT_MINBUY_MAX)}`}) </label>
+                                    <Input type='number' min={fromWei(JACKPOT_MINBUY_MIN)} max={fromWei(JACKPOT_MINBUY_MAX)} required placeholder='Minimum Buy' onChange={e => setMinimumBuy(e.target.value)} />
                                     <div className='mt-3'>
-                                        <Button variant='outlined' color='secondary' type='submit'> {isPendingTx ? "View TX Status" : "Set  Fee"} </Button>
+                                        <Button variant='outlined' color='secondary' type='submit'> {isPendingTx ? "View TX Status" : "Set  Features"} </Button>
                                     </div>
                                 </form>
                             </div>

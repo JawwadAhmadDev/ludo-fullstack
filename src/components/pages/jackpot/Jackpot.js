@@ -39,9 +39,15 @@ const Jackpot = () => {
     var isAuthorised = await checkIsAuthorised(walletStateValue.userWallet);
     if (isAuthorised) {
       var bnbAmount = 0.1
-      const fundedjackpot = await contract.methods.fundJackpot(0).send({ from: walletStateValue.userWallet, value: web3.utils.toWei(bnbAmount.toString()) })
-      toast.success("Jackpot funding success !!");
-      console.log(fundedjackpot) 
+      toast("Transection Mining Please wait ", {autoClose:false})
+       contract.methods.fundJackpot(0).send({ from: walletStateValue.userWallet, value: web3.utils.toWei(bnbAmount.toString()) })
+       .then(tx=>{
+        console.log(tx)
+        toast.success("Jackpot funding success !!");
+       })
+       .catch(err=>{
+        toast.error(err.message)
+       })
     } else { 
       axios.get(`${backendURL}/api/wallet/find/${walletStateValue.userWallet}`)
         .then(res => {

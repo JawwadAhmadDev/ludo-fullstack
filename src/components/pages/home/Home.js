@@ -1,52 +1,12 @@
 import React, { useEffect } from 'react'
 import NavBar from '../../component/NavBar'
-import {toast} from 'react-toastify'
 import "./css/bootstrap.min.css"
 import "./css/slick.css"
 import "./css/nice-select.css"
 import "./css/animate.css"
 import "./css/home.css"
-import "./css/custom.css"
-import { getWalletAddressOrConnect } from '../../../wallet'
-
-import Web3 from 'web3';
-import Contract from 'web3-eth-contract';
-
+import "./css/custom.css" 
 const Home = () => {
-  
-  const abi = require('../abi.json')
-  const contractAddress = "0x56d2cb1ff1fbd90f9bde4f4a4d256961e4d3de80";
-
-  useEffect(async ()=>{
-    returnNow()
-  },[])
-  const returnNow = async (e) => {
-    var acc = await getWalletAddressOrConnect()
-    console.log("mywc is ", acc);
-    if (typeof window.web3 !== 'undefined') {
-      window.web3 = new Web3(window.web3.currentProvider)
-    } else {
-      var web3Provider = new Web3.providers.HttpProvider("https://ropsten.infura.io/v3")
-      window.web3 = new Web3(web3Provider)
-    }
-    Contract.setProvider(window.web3.currentProvider);
-    var contract = new Contract(abi, contractAddress);
-    toast.success("DEVELOPMENT:Contract integrated , check methods in console ")
-    console.log("Contract methods",  contract.methods)
-    // console.log("about me " ,  await contract.methods.aboutMe().call())
-
-    // const owner = await contract.methods.owner().call()
-    // console.log("Owner is ", owner)
-    // if (owner.toString().toUpperCase() == acc.toString().toUpperCase()) {
-    //   return toast.error("You are  Owner,Owner cant return ticket");
-    // } else {
-    //   await contract.methods.returnTicket(ticketID, eventID).send({ from: acc })
-    //   toast.success("Ticket Return  !!");
-    //   window.location.reload()
-
-    // }
-  }
-
   return (
     <div className='home_page'>
       <div className="preloader" id="preloader" />

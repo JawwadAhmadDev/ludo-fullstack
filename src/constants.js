@@ -2,6 +2,23 @@
 import Web3 from 'web3';
 import Contract from 'web3-eth-contract';
 const abi = require('./abi.json')
+const  BNB_DECIMALS = 18;
+
+
+export const bnbDecimals = BNB_DECIMALS
+export const JACKPOT_CASHOUT_MIN = 4000;
+export const JACKPOT_CASHOUT_MAX = 7000;
+export const JACKPOT_BUYER_SHARE_MIN = 5000;
+export const JACKPOT_BUYER_SHARE_MAX = 10000;
+export const JACKPOT_MINBUY_MIN = 5 * 10**(BNB_DECIMALS - 2);
+export const JACKPOT_MINBUY_MAX = 5 * 10**(BNB_DECIMALS - 1);
+
+
+export const contractAddress="0x86C59e5A5EE43033d310a8Cf107196202A52a846"
+// export const backendURL="https://ludo-ol.herokuapp.com"
+export const backendURL = "http://localhost:5000";
+export const MAX_PCT= 10000;
+
 
 export const NETWORKS = {
     1: {
@@ -111,11 +128,12 @@ export const getBaseURL = () => {
     }
     return "https://nftcomponents.vercel.app"
 }
-
-export const contractAddress="0x86C59e5A5EE43033d310a8Cf107196202A52a846"
-// export const backendURL="https://ludo-ol.herokuapp.com"
-export const backendURL = "http://localhost:5000";
-export const MAX_PCT= 10000;
+export const fromWei= (number)=>{
+    return Web3.utils.fromWei(`${number}00`)
+}
+export const toWei= (number)=>{
+    return Web3.utils.toWei(`${number}00`)
+}
 export const  LudoContractRef = async()=> {
     if (typeof window.web3 !== 'undefined') {
         window.web3 = new Web3(window.web3.currentProvider)

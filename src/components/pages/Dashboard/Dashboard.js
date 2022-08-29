@@ -28,6 +28,7 @@ import ExcludeFromFee from '../../component/ExcludeFromFee';
 import ExcludeFromSwapAndLiquify from '../../component/ExcludeFromFeeSwapAndLiquify';
 import SwapAndLiquify from '../../component/SwapAndLiquify';
 import SetBuyFee from '../../component/SetBuyFee';
+import SetjackpotFeatures from '../../component/SetJackpotFeatures';
 
 
 
@@ -255,7 +256,7 @@ function DashboardContent() {
                     height: 240,
                   }}
                 >
-                  <TradingStatus />
+                  <SetjackpotFeatures />
                 </Paper>
               </Grid>  <Grid item xs={12} md={4} lg={3}>
                 <Paper
