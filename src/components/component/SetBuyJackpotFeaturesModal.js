@@ -41,10 +41,7 @@ export default function SetjackpotFeaturesModal() {
     };
     const handleClose = () => {
         setOpen(false);
-    };
-    const pctToMaxPCT = (pct) => {
-        return MAX_PCT * pct / 100;
-    }
+    }; 
     const submitFee = async (e) => {
         e.preventDefault()
         var contract = await fetchContract()

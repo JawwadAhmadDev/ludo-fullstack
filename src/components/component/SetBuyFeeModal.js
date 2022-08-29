@@ -5,7 +5,7 @@ import Button from '@mui/material/Button';
 import { Input } from 'reactstrap';
 import { useState } from 'react';
 import axios from 'axios';
-import { backendURL, MAX_PCT } from '../../constants';
+import {  MAX_PCT } from '../../constants';
 import { toast } from 'react-toastify'
 import { fetchContract } from '../../utils';
 import { useRecoilState } from 'recoil'

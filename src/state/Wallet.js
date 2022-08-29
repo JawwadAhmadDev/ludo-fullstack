@@ -11,3 +11,10 @@ export const walletState = atom({
         isOwner:false
     }, // default value (aka initial value)
 });
+
+export const utilStates= atom({
+    key:'utilStates',
+    defailt:{
+        isOpenPendingTXModal:false
+    }
+})

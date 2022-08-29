@@ -15,11 +15,10 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 import { getWalletAddressOrConnect } from "../wallet";
 import { fetchContract, walletShortFormer } from "../utils";
 import { useRecoilState } from 'recoil'
-import { walletState } from "../state/Wallet";
+import {  walletState } from "../state/Wallet";
 
 export const App = () => {
     const [walletStateValue, setWalletState] = useRecoilState(walletState)
-
 
     useEffect(async () => {
         var userWallet = await getWalletAddressOrConnect()
