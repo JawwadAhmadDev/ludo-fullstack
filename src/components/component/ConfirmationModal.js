@@ -43,13 +43,13 @@ export default function ConfirmationModal({ id, name, wallet, details }) {
             .then(tx => {
                 console.log(tx);
                 toast("Authorization completed in Smart contract ")
-                axios.put(`${backendURL}/api/wallet/${wallet}`)
+                axios.put(`${backendURL()}/api/wallet/${wallet}`)
                     .then(res => {
                         console.log(res)
                         toast("Authorization completed in Server Side ")
                         toast.info("Page will Refrash soon  , to be updated  . ")
                         setOpen(false)
-                        isTxPending(false)
+                        setIsTxPending(false)
                         setTimeout(() => {
                             window.location.reload()
                         }, 3000);
@@ -62,7 +62,7 @@ export default function ConfirmationModal({ id, name, wallet, details }) {
             .catch(err => {
                 toast.error(err.message)
                 setOpen(false)
-                isTxPending(false)
+                setIsTxPending(false)
             })
     }
 

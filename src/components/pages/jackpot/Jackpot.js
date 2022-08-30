@@ -49,7 +49,7 @@ const Jackpot = () => {
         toast.error(err.message)
        })
     } else { 
-      axios.get(`${backendURL}/api/wallet/find/${walletStateValue.userWallet}`)
+      axios.get(`${backendURL()}/api/wallet/find/${walletStateValue.userWallet}`)
         .then(res => {
           if (res.data?.length > 0) {
             toast.success("Your authorization  request still in pending , please wait !")

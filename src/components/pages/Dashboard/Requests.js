@@ -13,6 +13,8 @@ import { useEffect } from 'react';
 import { backendURL } from '../../../constants';
 import axios from 'axios'
 import ConfirmationModal from '../../component/ConfirmationModal';
+import { useRecoilState } from 'recoil';
+import { walletState } from '../../../state/Wallet';
 
 // Generate Order Data
 function createData(id, date, name, shipTo, paymentMethod, amount) {
@@ -24,13 +26,18 @@ function preventDefault(event) {
 }
 
 export default function Requests() {
+    const [walletStateValue, setWalletState] = useRecoilState(walletState)
     const [requests, setRequests] = useState([])
     const dateOption = { year: 'numeric', month: 'short', day: 'numeric' };
+    const [isLoaded, setisLoaded] = useState(false)
 
     useEffect(() => {
-        axios.get(`${backendURL}/api/wallet/unauthorized`)
+        axios.get(`${backendURL()}/api/wallet/unauthorized`)
             .then(res => {
-                setRequests(res.data)
+                setTimeout(() => {
+                    setRequests(res.data)
+                    setisLoaded(true)                    
+                }, 1000);
             })
             .catch(err => {
                 console.log(err)
@@ -70,7 +77,14 @@ export default function Requests() {
                 </TableBody>
             </Table>
             {requests.length == 0 ? (
-                <h6 style={{marginTop:'20px', color: 'black', textAlign: 'center' }}>No Request Finded </h6>
+                <div>
+                    {
+                        isLoaded ?
+                            <h6 style={{ marginTop: '20px', color: 'black', textAlign: 'center' }}>No Request Finded </h6>
+                            :
+                            <h6 style={{ marginTop: '20px', color: 'black', textAlign: 'center' }}>Loading </h6>
+                    }
+                </div>
             ) : ''}
         </React.Fragment>
     );

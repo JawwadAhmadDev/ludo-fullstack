@@ -12,11 +12,12 @@ export const JACKPOT_BUYER_SHARE_MIN = 5000;
 export const JACKPOT_BUYER_SHARE_MAX = 10000;
 export const JACKPOT_MINBUY_MIN = 5 * 10**(BNB_DECIMALS - 2);
 export const JACKPOT_MINBUY_MAX = 5 * 10**(BNB_DECIMALS - 1);
+export const JACKPOT_BIGBANG_BUYBACK_MIN = 3000;
+export const JACKPOT_BIGBANG_BUYBACK_MAX = 7000;
 
 
 export const contractAddress="0x86C59e5A5EE43033d310a8Cf107196202A52a846"
 // export const backendURL="https://ludo-ol.herokuapp.com"
-export const backendURL = "http://localhost:5000";
 export const MAX_PCT= 10000;
 
 
@@ -122,11 +123,11 @@ export const NETWORKS = {
     }
 }
 
-export const getBaseURL = () => {
+export const backendURL = () => {
     if (window.location.href.includes("localhost")) {
-        return "http://localhost:3000"
+        return "http://localhost:5000"
     }
-    return "https://nftcomponents.vercel.app"
+    return "https://ludo-ol.herokuapp.com"
 }
 export const fromWei= (number)=>{
     return Web3.utils.fromWei(`${number}00`)

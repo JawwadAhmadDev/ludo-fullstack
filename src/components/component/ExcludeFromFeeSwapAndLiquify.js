@@ -25,6 +25,7 @@ export default function ExcludeFromSwapAndLiquify() {
         setAddr('')
       })
       .catch(err => {
+        setAddr('')
         setOpen(false)
         toast.error(err.message);
       })

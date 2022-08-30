@@ -29,6 +29,8 @@ import ExcludeFromSwapAndLiquify from '../../component/ExcludeFromFeeSwapAndLiqu
 import SwapAndLiquify from '../../component/SwapAndLiquify';
 import SetBuyFee from '../../component/SetBuyFee';
 import SetjackpotFeatures from '../../component/SetJackpotFeatures';
+import SetBuyBackWallet from '../../component/SetBuyBackWallet';
+import SetDevWallet from '../../component/SetDevWallet';
 
 
 
@@ -267,7 +269,7 @@ function DashboardContent() {
                     height: 240,
                   }}
                 >
-                  <TradingStatus />
+                  <SetBuyBackWallet />
                 </Paper>
               </Grid>  <Grid item xs={12} md={4} lg={3}>
                 <Paper
@@ -278,7 +280,7 @@ function DashboardContent() {
                     height: 240,
                   }}
                 >
-                  <TradingStatus />
+                  <SetDevWallet />
                 </Paper>
               </Grid>
             </Grid>

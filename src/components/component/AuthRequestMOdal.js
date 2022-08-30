@@ -36,7 +36,7 @@ export default function NestedModal({walletAddress}) {
 
     const sendRequest= (e)=>{
         e.preventDefault()
-        axios.post(`${backendURL}/api/wallet`, {wallet:walletAddress , name , details})
+        axios.post(`${backendURL()}/api/wallet`, {wallet:walletAddress , name , details})
         .then(res=>{ 
             console.log(res.data)
             if(res.data.status==true){

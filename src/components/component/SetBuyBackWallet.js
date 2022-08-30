@@ -8,7 +8,7 @@ import { walletState } from '../../state/Wallet';
 import { toast } from 'react-toastify'
 
 
-export default function ExcludeFromFee() {
+export default function SetBuyBackWallet() {
   const [walletStateValue, setWalletState] = useRecoilState(walletState)
   const [addr, setAddr] = useState()
   const [open, setOpen] = useState(false)
@@ -18,10 +18,10 @@ export default function ExcludeFromFee() {
     e.preventDefault()
     var contract = await fetchContract()
     setOpen(true)
-    contract.methods.excludeFromFee(addr).send({ from: walletStateValue.userWallet })
+    contract.methods.setBuybackWallet(addr).send({ from: walletStateValue.userWallet })
       .then(tx => {
         setOpen(false)
-        toast(<a target="_blank" style={{ color: 'gray' }} href={`https://testnet.bscscan.com/tx/${tx.transactionHash}`}>Excluded Completed ! .🔗 View Tx On BSC Scan !!</a>, { autoClose: false })
+        toast(<a target="_blank" style={{ color: 'gray' }} href={`https://testnet.bscscan.com/tx/${tx.transactionHash}`}>Buyback Wallet Added ! .🔗 View Tx On BSC Scan !!</a>, { autoClose: false })
         setAddr('')
       })
       .catch(err => {
@@ -34,12 +34,12 @@ export default function ExcludeFromFee() {
     <React.Fragment>
       <TransectionPendingModal open={open} setOpen={setOpen} />
       <div>
-        <Title>Exclude From Fee</Title>
+        <Title>Set Buy Back Wallet</Title>
         <br />
         <form onSubmit={e=>submitHandler(e)} >
         <Input style={{width:'100%'}} value={addr} onChange={e=>setAddr(e.target.value)} required className='mt-3' placeholder='Enter Wallet Address' />
         <div className='mt-3'>
-          <Button type="submit" variant='outlined' color='secondary'>Exclude</Button>
+          <Button type="submit" variant='outlined' color='secondary'>Set</Button>
         </div>
         </form>
       </div>
