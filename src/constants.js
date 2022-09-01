@@ -17,7 +17,8 @@ export const JACKPOT_BIGBANG_BUYBACK_MIN = 3000;
 export const JACKPOT_BIGBANG_BUYBACK_MAX = 7000;
 
 
-export const contractAddress = "0x86C59e5A5EE43033d310a8Cf107196202A52a846"
+export const contractAddress = "0x3934591580bebAed0ac16d1Dc57cC44Fbc00A02c"
+// 0x86C59e5A5EE43033d310a8Cf107196202A52a846
 // export const backendURL="https://ludo-ol.herokuapp.com"
 export const MAX_PCT = 10000;
 

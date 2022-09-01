@@ -18,6 +18,7 @@ const DuplicateUser = () => {
                                 <Alert severity="error">
                                     <AlertTitle>Owner Authentication Failed !!</AlertTitle>
                                     Switch back to owner address to get Back  — <strong>Try  in Metamask</strong>
+                                    <a href='/' >Go to Home</a>
                                 </Alert>
                             </div>
                         </Grid>

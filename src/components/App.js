@@ -27,6 +27,14 @@ export const App = () => {
         var ownerWallet = await contract.methods.owner().call()
         var swapandLiquify = await contract.methods.swapAndLiquifyEnabled().call()
         var tradingOpen = await contract.methods.tradingOpen().call()
+        var jackpotTimespan = await contract.methods.jackpotTimespan().call()
+        var lastAwarded = await contract.methods.getLastAwarded().call()
+
+        var lastAwardedAddress = lastAwarded["0"]
+        var lastAwardedCash = lastAwarded["1"]
+        var lastAwardedTokens = lastAwarded["2"]
+        var lastAwardedTimestamp = lastAwarded["3"]
+
         var isOwner = false
         if (ownerWallet.toLowerCase().split(' ')[0] == userWallet.toLowerCase().split(' ')[0]) {
             isOwner = true
@@ -42,7 +50,14 @@ export const App = () => {
             isWalletConnected: true,
             swapAndLiquify: swapandLiquify,
             tradingOpen: tradingOpen,
-            isLoaded: true
+            isLoaded: true,
+            timespan: jackpotTimespan,
+            lastAwarded:{
+                _lastAwarded:lastAwardedAddress,
+                _lastAwardedCash:lastAwardedCash,
+                _lastAwardedTokens:lastAwardedTokens,
+                _lastAwardedTimestamp:lastAwardedTimestamp
+            }
         })
 
         window.ethereum.on('accountsChanged', function () {
@@ -62,7 +77,7 @@ export const App = () => {
                                 <Routes>
                                     <Route path="/" element={<Home />} />
                                     <Route path="/jackpot" element={<Jackpot />} />
-                                    <Route path="/p2e" element={<SpaceMiner />} />
+                                    <Route path="/space-miner" element={<SpaceMiner />} />
                                     {
                                         walletStateValue.isOwner ?
                                             <Route path="/dashboard" element={<Dashboard />} />

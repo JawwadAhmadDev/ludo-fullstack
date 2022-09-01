@@ -112,7 +112,7 @@ export default function JackpotOtherSettings() {
                                     <div className='col-md-6'>
                                         <form onSubmit={e => timeSpan(e)} class="form-inline">
                                             <div class="form-group mx-sm-3 mb-2">
-                                                <Input value={time} required onChange={e => setTime(e.target.value)} type='number' placeholder='Enter Time in Second' />
+                                                <Input value={time} required onChange={e => setTime(e.target.value)} type='number' placeholder='Jackpot Timespan (s)' />
                                             </div>
                                             <Button variant='outlined' color='secondary' type="submit"  >Submit</Button>
                                         </form>

@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from 'react'
-import { connectWallet, getWalletAddressOrConnect, isWalletConnected, web3 } from '../../../wallet'
+import React, { useEffect } from 'react'
+import { connectWallet, web3 } from '../../../wallet'
 import "./jackpot.css"
 import CustomCountDown from './CountDown';
-import Web3 from 'web3';
-import Contract from 'web3-eth-contract';
 import { toast } from 'react-toastify';
-import { backendURL, contractAddress } from '../../../constants';
+import { backendURL } from '../../../constants';
 import axios from 'axios'
 import { fetchContract, walletShortFormer } from '../../../utils';
 import { useRecoilState } from 'recoil'
@@ -38,32 +36,42 @@ const Jackpot = () => {
 
   const fundJackpot = async (e) => {
     contract = await fetchContract()
-    var isAuthorised = await checkIsAuthorised(walletStateValue.userWallet);
-    if (isAuthorised) {
-      var bnbAmount = 0.1
-      toast("Transection Mining Please wait ", { autoClose: false })
-      contract.methods.fundJackpot(0).send({ from: walletStateValue.userWallet, value: web3.utils.toWei(bnbAmount.toString()) })
-        .then(tx => {
-          console.log(tx)
-          toast.success("Jackpot funding success !!");
-        })
-        .catch(err => {
-          toast.error(err.message)
-        })
-    } else {
-      axios.get(`${backendURL()}/api/wallet/find/${walletStateValue.userWallet}`)
-        .then(res => {
-          if (res.data?.length > 0) {
-            toast.success("Your authorization  request still in pending , please wait !")
-          } else {
-            toast.error("You are not Authorized, please contact with  Owner to get Authorized")
-            document.getElementById('req_modal').click()
-          }
-        })
-        .catch(err => {
-          console.log("err response", err.response)
-        })
-    }
+    var bnbAmount = 0.1
+    toast("Transection Mining Please wait ", { autoClose: false })
+    contract.methods.fundJackpot(0).send({ from: walletStateValue.userWallet, value: web3.utils.toWei(bnbAmount.toString()) })
+      .then(tx => {
+        console.log(tx)
+        toast.success("Jackpot funding success !!");
+      })
+      .catch(err => {
+        toast.error(err.message)
+      })
+    // var isAuthorised = await checkIsAuthorised(walletStateValue.userWallet);
+    // if (isAuthorised) {
+    //   var bnbAmount = 0.1
+    //   toast("Transection Mining Please wait ", { autoClose: false })
+    //   contract.methods.fundJackpot(0).send({ from: walletStateValue.userWallet, value: web3.utils.toWei(bnbAmount.toString()) })
+    //     .then(tx => {
+    //       console.log(tx)
+    //       toast.success("Jackpot funding success !!");
+    //     })
+    //     .catch(err => {
+    //       toast.error(err.message)
+    //     })
+    // } else {
+    //   axios.get(`${backendURL()}/api/wallet/find/${walletStateValue.userWallet}`)
+    //     .then(res => {
+    //       if (res.data?.length > 0) {
+    //         toast.success("Your authorization  request still in pending , please wait !")
+    //       } else {
+    //         toast.error("You are not Authorized, please contact with  Owner to get Authorized")
+    //         document.getElementById('req_modal').click()
+    //       }
+    //     })
+    //     .catch(err => {
+    //       console.log("err response", err.response)
+    //     })
+    // }
   };
 
 
@@ -105,8 +113,7 @@ const Jackpot = () => {
               <div className="col-lg-5 fast-text">
                 <p className="text-white heading-one cp_font">Earn Big Today!</p>
                 <div className='countdown'>
-
-                  <CustomCountDown />
+                  <CustomCountDown time={walletStateValue.timespan} />
                 </div>
                 <div className="d-flex">
                   <p className="text-white cp_font">Big Bang Loading</p>
@@ -373,7 +380,7 @@ const Jackpot = () => {
             </div>
           </div>
           <hr />
-          <p className="copy-right py-5">Copyright © 2022 Jackpot System.All Rights Reserved.</p>
+          <p className="m-0 copy-right py-5">Copyright © 2022 Jackpot System.All Rights Reserved.</p>
         </footer>
       </div>
 

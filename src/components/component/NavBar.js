@@ -27,7 +27,7 @@ const NavBar = () => {
                   <li className="menu_has_children"><a href="#0">Games</a>
                     <ul className="sub-menu">
                       <li><a href="/jackpot">Jackpot</a></li>
-                      <li><a href="/p2e">Cash</a></li>
+                      <li><a href="/space-miner">Cash</a></li>
                     </ul>
                   </li>
                   <li className="menu_has_children"><a href="#0">Tournaments</a>

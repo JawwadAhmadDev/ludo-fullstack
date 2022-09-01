@@ -284,13 +284,13 @@ function DashboardContent() {
                 </Paper>
               </Grid>
             </Grid>
-            <Grid container spacing={3}>
+            {/* <Grid container spacing={3}>
               <Grid item xs={12}>
                 <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
                   <Requests />
                 </Paper>
               </Grid>
-            </Grid>
+            </Grid> */}
           </Container>
         </Box>
       </Box>

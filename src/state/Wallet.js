@@ -11,7 +11,14 @@ export const walletState = atom({
         userWallet:'',
         isOwner:false,
         swapAndLiquify:false,
-        tradingOpen:false
+        tradingOpen:false,
+        timespan:0,
+        lastAwarded:{
+            _lastAwarded:'',
+            _lastAwardedCash:0,
+            _lastAwardedTokens:0,
+            _lastAwardedTimestamp:0
+        }
     }, // default value (aka initial value)
 });
 

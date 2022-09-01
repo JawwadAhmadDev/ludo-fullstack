@@ -2,7 +2,7 @@ import React from 'react'
 import Countdown from 'react-countdown';
 
 
-const CustomCountDown = () => {
+const CustomCountDown = ({time}) => {
     // Random component
     const Completionist = () => <span>You are good to go!</span>;
 
@@ -23,7 +23,7 @@ const CustomCountDown = () => {
     };
     return (
         <Countdown
-            date={Date.now() + 600000}
+            date={Date.now() + time*1000}
             renderer={renderer}
         />
     )

@@ -163,7 +163,7 @@ const Home = () => {
                   <a href="/jackpot"><img src="images/top-game-1.png" alt="image" /></a>
                 </div>
                 <div className="col-lg-3 col-md-4 col-sm-4">
-                  <a href="/p2e"><img src="images/top-game-3.png" alt="image" /></a>
+                  <a href="/space-miner"><img src="images/top-game-3.png" alt="image" /></a>
                 </div>
               </div>
             </div>
