@@ -1,8 +1,9 @@
 
+import { toast } from 'react-toastify';
 import Web3 from 'web3';
 import Contract from 'web3-eth-contract';
 const abi = require('./abi.json')
-const  BNB_DECIMALS = 18;
+const BNB_DECIMALS = 18;
 
 
 export const bnbDecimals = BNB_DECIMALS
@@ -10,15 +11,15 @@ export const JACKPOT_CASHOUT_MIN = 4000;
 export const JACKPOT_CASHOUT_MAX = 7000;
 export const JACKPOT_BUYER_SHARE_MIN = 5000;
 export const JACKPOT_BUYER_SHARE_MAX = 10000;
-export const JACKPOT_MINBUY_MIN = 5 * 10**(BNB_DECIMALS - 2);
-export const JACKPOT_MINBUY_MAX = 5 * 10**(BNB_DECIMALS - 1);
+export const JACKPOT_MINBUY_MIN = 5 * 10 ** (BNB_DECIMALS - 2);
+export const JACKPOT_MINBUY_MAX = 5 * 10 ** (BNB_DECIMALS - 1);
 export const JACKPOT_BIGBANG_BUYBACK_MIN = 3000;
 export const JACKPOT_BIGBANG_BUYBACK_MAX = 7000;
 
 
-export const contractAddress="0x86C59e5A5EE43033d310a8Cf107196202A52a846"
+export const contractAddress = "0x86C59e5A5EE43033d310a8Cf107196202A52a846"
 // export const backendURL="https://ludo-ol.herokuapp.com"
-export const MAX_PCT= 10000;
+export const MAX_PCT = 10000;
 
 
 export const NETWORKS = {
@@ -129,13 +130,13 @@ export const backendURL = () => {
     }
     return "https://ludo-ol.herokuapp.com"
 }
-export const fromWei= (number)=>{
+export const fromWei = (number) => {
     return Web3.utils.fromWei(`${number}00`)
 }
-export const toWei= (number)=>{
+export const toWei = (number) => {
     return Web3.utils.toWei(`${number}00`)
 }
-export const  LudoContractRef = async()=> {
+export const LudoContractRef = async () => {
     if (typeof window.web3 !== 'undefined') {
         window.web3 = new Web3(window.web3.currentProvider)
     } else {
@@ -144,4 +145,16 @@ export const  LudoContractRef = async()=> {
     }
     Contract.setProvider(window.web3.currentProvider);
     return await new Contract(abi, contractAddress);
+}
+export const copyToClip = (id, message) => {
+
+    var copyText = document.getElementById(`${id}`);
+
+    /* Select the text field */
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+    /* Copy the text inside the text field */
+    navigator.clipboard.writeText(copyText.value);
+    toast.success(message)
 }

@@ -5,11 +5,10 @@ import CustomCountDown from './CountDown';
 import Web3 from 'web3';
 import Contract from 'web3-eth-contract';
 import { toast } from 'react-toastify';
-import AuthRequestModal from '../../component/AuthRequestMOdal';
 import { backendURL, contractAddress } from '../../../constants';
 import axios from 'axios'
 import { fetchContract, walletShortFormer } from '../../../utils';
-import {useRecoilState} from 'recoil'
+import { useRecoilState } from 'recoil'
 import { walletState } from '../../../state/Wallet';
 
 
@@ -17,7 +16,7 @@ const Jackpot = () => {
   const [walletStateValue, setWalletState] = useRecoilState(walletState)
   var contract;
 
-  useEffect(async () => { 
+  useEffect(async () => {
     var nav = document.querySelector('.navbar');
     window.addEventListener('scroll', function () {
       if (window.pageYOffset > 100) {
@@ -26,6 +25,9 @@ const Jackpot = () => {
         nav.classList.remove('bg-dark', 'shadow')
       }
     });
+
+
+
 
   }, [])
 
@@ -39,16 +41,16 @@ const Jackpot = () => {
     var isAuthorised = await checkIsAuthorised(walletStateValue.userWallet);
     if (isAuthorised) {
       var bnbAmount = 0.1
-      toast("Transection Mining Please wait ", {autoClose:false})
-       contract.methods.fundJackpot(0).send({ from: walletStateValue.userWallet, value: web3.utils.toWei(bnbAmount.toString()) })
-       .then(tx=>{
-        console.log(tx)
-        toast.success("Jackpot funding success !!");
-       })
-       .catch(err=>{
-        toast.error(err.message)
-       })
-    } else { 
+      toast("Transection Mining Please wait ", { autoClose: false })
+      contract.methods.fundJackpot(0).send({ from: walletStateValue.userWallet, value: web3.utils.toWei(bnbAmount.toString()) })
+        .then(tx => {
+          console.log(tx)
+          toast.success("Jackpot funding success !!");
+        })
+        .catch(err => {
+          toast.error(err.message)
+        })
+    } else {
       axios.get(`${backendURL()}/api/wallet/find/${walletStateValue.userWallet}`)
         .then(res => {
           if (res.data?.length > 0) {
@@ -89,7 +91,7 @@ const Jackpot = () => {
                 <li className="nav-item"><a className="nav-link" href="#"><img src="pimages/telegram.png" className="mx-2 img-fluid" width="30px" height="30px" alt="" />Telegram</a></li>
               </ul>
               <a href="#" className="header-btn" onClick={() => connectWallet()}>
-                <button className='btn btn-jk-connect '>{walletStateValue.isWalletConnected ? walletShortFormer(walletStateValue.userWallet):"Connect Wallet"}</button>
+                <button className='btn btn-jk-connect '>{walletStateValue.isWalletConnected ? walletShortFormer(walletStateValue.userWallet) : "Connect Wallet"}</button>
               </a>
             </div>
           </div>
@@ -101,44 +103,47 @@ const Jackpot = () => {
             </div>
             <div className="row">
               <div className="col-lg-5 fast-text">
-                <p className="text-white heading-one">Earn Big Today!</p>
+                <p className="text-white heading-one cp_font">Earn Big Today!</p>
                 <div className='countdown'>
 
                   <CustomCountDown />
                 </div>
                 <div className="d-flex">
-                  <p className="text-white">Big Bang Loading</p>
+                  <p className="text-white cp_font">Big Bang Loading</p>
                   <p className="text-white">57.9%</p>
                 </div>
                 <div className="progress">
                   <div className="progress-bar progress-bar-striped" role="progressbar" style={{ width: '57.9%' }} aria-valuenow="57.9" aria-valuemin={0} aria-valuemax={100} />
                 </div>
-                <span className='c_pointer' onClick={() => fundJackpot()}  ><img src="pimages/BTN-2.png" className="img-fluid mt-5 " /></span>
-                <AuthRequestModal walletAddress={walletStateValue.userWallet} />
+                {/* <span className='c_pointer' onClick={() => fundJackpot()}  ><img src="pimages/BTN-2.png" className="img-fluid mt-5 " /></span> */}
+                <button className='btn queck_buy_btn mt-4 cp_font' onClick={e => fundJackpot(e)}>Quick Buy (0.1 BNB)</button>
+                {/* <AuthRequestModal walletAddress={walletStateValue.userWallet} /> */}
               </div>
               <div className=" col-lg-2">
               </div>
               <div className="col-lg-5">
                 <form className='jkform' action>
-                  <p className="heading-two">Buy Now</p>
-                  <label >
+                  <p className="heading-two cp_font">Buy Now</p>
+                  <label className='r_font'>
                     <img src="pimages/image 5.png" className="img-fluid me-3 my-3" alt="Buy Now " />BNB <i className="fa-solid fa-caret-down" />
                   </label> <br />
-                  <input className='input' type="text" placeholder={25} />
+                  <input className='input r_font' type="text" placeholder={25} />
                   <div className="d-flex my-3">
-                    <p>≈ $ 6.21 k</p>
-                    <p>Balance: 0.00</p>
+                    <p className='r_font'>≈ $ 6.21 k</p>
+                    <p className='r_font'>Balance: 0.00</p>
                   </div>
                   <div className="mid-arrow">
                     <img src="pimages/Vector.png" className="img-fluid" alt="" />
                   </div>
-                  <label htmlFor><img src="pimages/5.png" className="img-fluid me-3 my-3" alt="" />GMZ</label> <br />
-                  <input className='input' type="text" placeholder="780.855733385871334857" />
+                  <label htmlFor className='r_font'><img src="pimages/5.png" className="img-fluid me-3 my-3" alt="" />GMZ</label> <br />
+                  <input className='input r_font' type="text" placeholder="780.855733385871334857" />
                   <div className="d-flex my-3">
-                    <p>≈ $ 6.21 k</p>
-                    <p>Balance: 0.00</p>
+                    <p className='r_font'>≈ $ 6.21 k</p>
+                    <p className='r_font'>Balance: 0.00</p>
                   </div>
-                  <a href="#"><img src="pimages/btn-3.png" className="img-fluid" alt="" /></a>
+                  <div className='text-center'>
+                    <a href="#"><img src="pimages/btn-3.png" className="img-fluid" alt="" /></a>
+                  </div>
                   <p className="fo-last my-3">Charts | Buy Crypto</p>
                 </form>
               </div>
@@ -149,7 +154,7 @@ const Jackpot = () => {
           <div className="container">
             <div className="row">
               <div className="col-lg-6">
-                <p className="red-white">Winner’s <span>Share</span></p>
+                <p className="red-white cp_font">Winner’s <span>Share</span></p>
                 <div className="d-flex winner">
                   <img src="pimages/Rectangle 5230 (1).png" className="img_mobile" width="122px" height="146px" alt="" />
                   <div className="winner-one">
@@ -164,7 +169,7 @@ const Jackpot = () => {
                 </div>
               </div>
               <div className="col-lg-6 mobile">
-                <p className="red-white">Buyback’s <span>Share</span></p>
+                <p className="red-white cp_font">Buyback’s <span>Share</span></p>
                 <div className="d-flex winner">
                   <img src="pimages/Rectangle 5230 (2).png" className="img_mobile" width="122px" height="146px" alt="" />
                   <div className="winner-one">
@@ -182,46 +187,43 @@ const Jackpot = () => {
           </div>
         </section>
         <section className="how-works text-center">
-          <div className="container">
-            <p className="text-center  my-5 heading-one">How <span>It Works!</span></p>
+          <div className="col-md-10 offset-md-1">
+            <p className="text-center  my-5 heading-one cp_font">How <span>It Works!</span></p>
             <div className="row">
-              <div className="col-lg-4 one">
-                <img src="pimages/buy 1.png" className="img-fluid mb-5" alt="" />
-                <p>2% of every buy and 5% of every sell is converted into BNB and sent to the Jackpot.</p>
+              {/* <div className='offset-md-1'></div> */}
+              <div className="col-lg-2 one">
+                <div className='bg_overlay'>
+                  <img src="pimages/buy 1.png" className="img-fluid mb-2" alt="" />
+                  <p>2% of every buy and 5% of every sell is converted into BNB and sent to the Jackpot.</p>
+                </div>
               </div>
-              <div className="col-lg-4 two">
-                <img src="pimages/anniversary.png" className="img-fluid mb-5" alt="" />
+              <div className="col-lg-2 two">
+                <img src="pimages/anniversary.png" className="img-fluid mb-2" alt="" />
                 <p>If there are no buys worth at least 0.1 BNB for 10 whole minutes, the last buyer gets 50% of the Jackpot
                   transferred directly to his personal wallet.</p>
               </div>
-              <div className="col-lg-4 three">
-                <img src="pimages/investor 1.png" className="img-fluid mb-5" alt="" />
+              <div className="col-lg-2 three">
+                <img src="pimages/investor 1.png" className="img-fluid mb-2" alt="" />
                 <p>This will create a constant buy pressure, as multiple investors will try to win the Jackpot.</p>
               </div>
-            </div>
-            <div className="row my-5">
-              <div className="col-lg-2">
-              </div>
-              <div className="col-lg-4 four">
-                <img src="pimages/bank 1.png" className="img-fluid mb-5" alt="" />
+              <div className="col-lg-2 four">
+                <img src="pimages/bank 1.png" className="img-fluid mb-2" alt="" />
                 <p>At the same time, if you bought in and didn't win, you can watch your investment steadily rise as more buys
                   come to increase the Dollar worth of your investment.
                 </p>
               </div>
-              <div className="col-lg-4 five">
-                <img src="pimages/wallet (2) 1.png" className="img-fluid mb-5" alt="" />
+              <div className="col-lg-2 five">
+                <img src="pimages/wallet (2) 1.png" className="img-fluid mb-2" alt="" />
                 <p>A custom Telegram bot will announce constantly when the 10 minute timer will expire and show the last
                   buyer's wallet.
                 </p>
-              </div>
-              <div className="col-lg-2">
               </div>
             </div>
           </div>
         </section>
         <section className="big-bang my-5 ">
           <div className="container">
-            <p className="text-center py-5 heading-all">The <span>Big Bang</span></p>
+            <p className="text-center py-5 heading-all cp_font">The <span>Big Bang</span></p>
             <div className="row">
               <div className="col-lg-7">
                 <div className="d-flex ">
@@ -251,7 +253,7 @@ const Jackpot = () => {
         </section>
         <section className="rules my-5">
           <div className="container">
-            <p className="text-center py-5 heading-all">Rules<span> For Buying &amp; Selling</span></p>
+            <p className="text-center py-5 heading-all cp_font" style={{ textTransform: 'uppercase' }}>token<span>omics</span></p>
             <div className="row">
               <div className="col-lg-6">
                 <div className="d-flex  py-5 ps-4 pe-5">
@@ -259,7 +261,7 @@ const Jackpot = () => {
                     <img src="pimages/Illustration.png" className="img-fluid" alt="" />
                   </div>
                   <div className="text">
-                    <p className="head">For Buying</p>
+                    <p className="head cp_font">For Buying</p>
                     <div className="items">
                       <p>1. 2% Liquidity</p>
                       <p>2. 2% Marketing</p>
@@ -275,7 +277,7 @@ const Jackpot = () => {
                     <img src="pimages/Illustration (1).png" className="img-fluid" alt="" />
                   </div>
                   <div className="text">
-                    <p className="head">for selling</p>
+                    <p className="head cp_font">For selling</p>
                     <div className="items">
                       <p>1. 2% Liquidity</p>
                       <p>2. 3% Marketing</p>
@@ -292,7 +294,7 @@ const Jackpot = () => {
           <div className="container py-5">
             <div className="row">
               <div className="col-lg-6">
-                <p className="py-5 heading-all">The<span> Jackpot</span></p>
+                <p className="py-5 heading-all cp_font">The<span> Jackpot</span></p>
                 <p className="one">If for 10 minutes no buy of minimum approximately 0.1 BNB worth of $LAS occurs, 55.55% of the
                   jackpot wallet gets cashed out. Both BNB in the contract and the LAS tokens that are still not converted
                   into BNB are take into account for the cash-out.
@@ -315,7 +317,7 @@ const Jackpot = () => {
                 <img src="pimages/call-to-action-left.png" className="img-fluid" alt="" />
               </div>
               <div className="col-lg-6 my-5">
-                <p className="sub-heading">Subscribe Us</p>
+                <p className="sub-heading cp_font">Subscribe Us</p>
                 <p className="sub-p">To Get Exclusive Benefits And
                   Win Rewards</p>
                 <div className='email_form'>
@@ -331,15 +333,18 @@ const Jackpot = () => {
           <div className="container py-5">
             <div className="row">
               <div className="col-lg-3">
-                <img src="pimages/JACKPOT SYSTEM.png" className="img-fluid" alt="" />
+                <h4 className='bn_font' style={{
+                  fontWeight: '500',
+                  fontSize: '35px'
+                }} >Jackpot System</h4>
               </div>
               <div className="col-lg-2">
-                <p className="f-head">Company</p>
-                <p className="f-p">Home</p>
-                <p className="f-p">About us</p>
-                <p className="f-p">Tournaments</p>
-                <p className="f-p">Games</p>
-                <p className="f-p">contact us</p>
+                <p className="cp_font f-head">Company</p>
+                <p className="cp_font f-p">Home</p>
+                <p className="cp_font f-p">About us</p>
+                <p className="cp_font f-p">Tournaments</p>
+                <p className="cp_font f-p">Games</p>
+                <p className="cp_font f-p">contact us</p>
               </div>
               <div className="col-lg-2">
                 <p className="f-head">Legal Info</p>

@@ -1,7 +1,12 @@
 import React, { useEffect } from "react"; 
 import { connectWallet } from "../../wallet";
+import {useRecoilState} from 'recoil'
+import { walletState } from "../../state/Wallet";
+import { walletShortFormer } from "../../utils";
+import { copyToClip } from "../../constants";
 
 const NavBar = () => {
+  const [walletStateValue, setWalletState] =useRecoilState(walletState) 
   useEffect(()=>{
      connectWallet() 
   })
@@ -101,9 +106,13 @@ const NavBar = () => {
                   <button type="button" className="cmn-btn  " data-toggle="modal" data-target="#signInModalLong">
                     Sign In
                   </button> */}
-                  <button type="button" id="connect" onClick={()=>connectWallet()} className="cmn-btn"  >
+                  {/* <button type="button" id="connect" onClick={()=>connectWallet()} className="cmn-btn"  >
                     Connect 
-                  </button>
+                  </button> */}
+                  
+              <a href="#" className="header-btn" onClick={() => connectWallet()}>
+                <button className='btn btn-jk-connect '>{walletStateValue.isWalletConnected ?<span   id="wallet_address" >{ walletShortFormer(walletStateValue.userWallet)}</span>:"Connect Wallet"}</button>
+              </a>
                   <div className="modal register fade" id="signInModalLong" tabIndex={-1} role="dialog" aria-labelledby="signInModalLongTitle" aria-hidden="true">
                     <div className="modal-dialog" role="document">
                       <div className="modal-content">

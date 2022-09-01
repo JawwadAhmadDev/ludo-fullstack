@@ -33,7 +33,7 @@ export default function TradingStatus() {
           <div>
             {
               walletStateValue.tradingOpen ?
-                <Button variant='outlined' color='secondary' >Enabled</Button>
+                <Button variant='outlined' color='secondary' disabled >Enabled</Button>
                 :
                 <Button variant='outlined' color='secondary' onClick={e => { enableTrading() }}>Enable</Button>
             }

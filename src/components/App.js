@@ -33,21 +33,19 @@ export const App = () => {
         } else {
             isOwner = false
         }
-        setTimeout(() => {
 
-            setWalletState({
-                ...walletStateValue,
-                ownerWallet: ownerWallet,
-                userWallet: userWallet,
-                isOwner: isOwner,
-                isWalletConnected: true,
-                swapAndLiquify: swapandLiquify,
-                tradingOpen: tradingOpen,
-                isLoaded: true
-            })
-        }, 2000);
+        setWalletState({
+            ...walletStateValue,
+            ownerWallet: ownerWallet,
+            userWallet: userWallet,
+            isOwner: isOwner,
+            isWalletConnected: true,
+            swapAndLiquify: swapandLiquify,
+            tradingOpen: tradingOpen,
+            isLoaded: true
+        })
 
-        window.ethereum.on('accountsChanged', function (account) {
+        window.ethereum.on('accountsChanged', function () {
             window.location.reload()
         })
         return
