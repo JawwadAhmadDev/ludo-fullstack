@@ -139,7 +139,7 @@ const Jackpot = () => {
             <div className="mid-text text-center">
               <img src="pimages/mid text.png" className="img-fluid" alt="" />
             </div>
-            <div className="row">
+            <div className="row" style={{padding:'100px 0 '}}>
               <div className="col-lg-5 fast-text">
                 <p className="text-white heading-one cp_font">Earn Big Today!</p>
                 <div className='countdown'>
@@ -157,33 +157,31 @@ const Jackpot = () => {
                 {/* <AuthRequestModal walletAddress={walletStateValue.userWallet} /> */}
               </div>
               <div className=" col-lg-2">
-              </div>
-              <div className="col-lg-5">
-                <form className='jkform' action>
+              </div> 
+                <form className='jkform col-lg-5' action>
                   <p className="heading-two cp_font">Buy Now</p>
                   <label className='r_font'>
-                    <img src="pimages/image 5.png" className="img-fluid me-3 my-3" alt="Buy Now " />BNB <i className="fa-solid fa-caret-down" />
-                  </label> <br />
-                  <input className='input r_font' type="text" placeholder={25} />
-                  <div className="d-flex my-3">
+                    <img src="pimages/image 5.png" className="img-fluid mt-2 mb-2 mr-2 w-35" alt="Buy Now " />BNB <i className="fa-solid fa-caret-down" />
+                  </label>
+                  <input className='input r_font g_border' type="number" placeholder={25} />
+                  <div className="d-flex mb0i mt-2">
                     <p className='r_font'>≈ $ 6.21 k</p>
                     <p className='r_font'>Balance: 0.00</p>
                   </div>
                   <div className="mid-arrow">
                     <img src="pimages/Vector.png" className="img-fluid" alt="" />
                   </div>
-                  <label htmlFor className='r_font'><img src="pimages/5.png" className="img-fluid me-3 my-3" alt="" />GMZ</label> <br />
-                  <input className='input r_font' type="text" placeholder="780.855733385871334857" />
-                  <div className="d-flex my-3">
+                  <label htmlFor className='r_font'><img src="pimages/5.png" className="img-fluid mt-2 mb-2 mr-2 w-35" alt="" />GMZ</label> <br />
+                  <input className='input r_font g_border' type="number" placeholder='780.855733385871334857' />
+                  <div className="d-flex  mt-2 mb0i">
                     <p className='r_font'>≈ $ 6.21 k</p>
                     <p className='r_font'>Balance: 0.00</p>
                   </div>
                   <div className='text-center'>
-                    <a href="#"><img src="pimages/btn-3.png" className="img-fluid" alt="" /></a>
+                  <button className='btn queck_buy_btn  cp_font buy_coins' >Buy Coins Now</button>
                   </div>
                   <p className="fo-last my-3">Charts | Buy Crypto</p>
-                </form>
-              </div>
+                </form> 
             </div>
           </div>
         </section>
@@ -200,8 +198,8 @@ const Jackpot = () => {
                   </div>
                   <p className="divided" />
                   <div className="winner-two">
-                    <p className="text-one"><img src="pimages/image 5.png" className="img-fluid me-2" alt="" />4.21</p>
-                    <p className="text-two"><img src="pimages/5.png" className="img-fluid me-2" alt="" />341.423</p>
+                    <p className="text-one"><img src="pimages/image 5.png" className="img-fluid  mr-2 w-35" alt="" />4.21</p>
+                    <p className="text-two"><img src="pimages/5.png" className="img-fluid  mr-2 w-35" alt="" />341.423</p>
                   </div>
                 </div>
               </div>
@@ -215,8 +213,8 @@ const Jackpot = () => {
                   </div>
                   <p className="divided" />
                   <div className="winner-two">
-                    <p className="text-one"><img src="pimages/image 5.png" className="img-fluid me-2" alt="" />44.21</p>
-                    <p className="text-two"><img src="pimages/5.png" className="img-fluid me-2" alt="" />1341.423</p>
+                    <p className="text-one"><img src="pimages/image 5.png" className="img-fluid  mr-2 w-35" alt="" />44.21</p>
+                    <p className="text-two"><img src="pimages/5.png" className="img-fluid  mr-2 w-35" alt="" />1341.423</p>
                   </div>
                 </div>
               </div>

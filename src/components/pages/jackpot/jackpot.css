@@ -1,25 +1,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@200;400;500;600;700;900&display=swap');
-.c_pointer{
+
+.c_pointer {
     cursor: pointer;
 }
-.jackpot_page{
+
+.jackpot_page {
     position: relative;
 }
-.jackpot_page>* { 
+
+.jackpot_page>* {
     box-sizing: border-box;
-} 
+}
+
 body {
     background: rgba(35, 3, 97, 1);
     font-family: 'Roboto', sans-serif;
 }
 
-.queck_buy_btn{
+.queck_buy_btn {
     color: white;
     background: #7000d3;
     font-size: 22px;
     padding: 12px 23px;
     outline: 0;
     border-radius: 100px;
+}
+
+.queck_buy_btn:hover {
+    color: white;
 }
 
 .countdown {
@@ -31,7 +39,8 @@ body {
     margin-bottom: 50px;
     display: flex;
 }
-.countdown_timer h4{
+
+.countdown_timer h4 {
     margin-left: 25px;
     line-height: 2;
 }
@@ -48,11 +57,11 @@ body {
 }
 
 .countdown_timer .devider {
-     border: 0;    
+    border: 0;
     font-size: 40px;
     position: relative;
     width: 35px;
-    height: 60px; 
+    height: 60px;
 }
 
 .devider span {
@@ -61,13 +70,15 @@ body {
     transform: translate(-50%, -50%);
     left: 50%;
 }
+
 .count_number span {
     position: absolute;
     top: 50%;
     transform: translate(-50%, -50%);
     left: 50%;
 }
-.count_number p{
+
+.count_number p {
     position: absolute;
     font-weight: 300;
     margin: 0;
@@ -76,6 +87,7 @@ body {
     left: 50%;
     transform: translate(-50%, 10%);
 }
+
 .btn-jk-connect {
     background-color: #7000d3;
     color: white;
@@ -97,12 +109,10 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 1178px;
-
 }
 
 .fast-text {
-    padding-top: 15%;
+    padding-top: 30px;
 }
 
 .timer p {
@@ -125,14 +135,13 @@ body {
 }
 
 .mid-text {
-    padding-top: 7%;
-    /* padding-bottom: 5%; */
+    padding-top: 70px;
 }
 
 .heading-one {
-    font-family: Fira Sans;
-    font-size: 69px;
+    font-size: 56px;
     font-weight: 600;
+    white-space: nowrap;
     line-height: 77px;
     letter-spacing: 0.03em;
     text-align: left;
@@ -142,14 +151,18 @@ body {
     color: white;
     font-size: 34px;
     font-weight: 600;
-    line-height: 100px;
+    margin: 10px 0 0 0;
     letter-spacing: 0.035em;
     text-align: center;
 }
 
+.w-35 {
+    width: 35px;
+}
+
 label {
     color: white;
-    font-family: Qanelas Soft;
+    margin: 0;
     font-size: 21px;
     font-weight: 600;
     letter-spacing: 0.035em;
@@ -161,11 +174,11 @@ label i {
 }
 
 .jkform {
-    background: linear-gradient(166.96deg, #2F1781 31.29%, #584EA1 73.14%),
-        linear-gradient(0deg, rgba(54, 15, 138, 0.9), rgba(54, 15, 138, 0.9));
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+    background: linear-gradient(166.96deg, #360F8A 31.29%, #481aac 73.14%),
+        linear-gradient(0deg, #360f8ae6, #360f8ae6);
+    box-shadow: #0000001a 0px 20px 25px -5px, #0000000a 0px 10px 10px -5px;
     border-radius: 12px;
-    border-image-source: linear-gradient(166.96deg, #2F1781 31.29%, #584EA1 73.14%);
+    border-image-source: linear-gradient(166.96deg, #360F8A 31.29%, #481aac 73.14%);
     padding: 15px 35px;
     /* margin-top: -100px; */
 }
@@ -181,7 +194,7 @@ form .d-flex p {
 }
 
 .input {
-    height: 69px;
+    height: 45px;
     width: 100%;
     border: 1px solid;
     border-image-source: radial-gradient(88.71% 107.03% at 55% 41.24%, #EA4835 0%, #561D93 100%)
@@ -192,6 +205,24 @@ form .d-flex p {
     border-radius: 30px;
     outline: 0;
     background: rgba(34, 9, 112, 0.64);
+}
+
+.mb0i {
+    margin-bottom: 0 !important;
+}
+
+.buy_coins {
+    text-transform: uppercase;
+    background-color: #7400D3;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.g_border {
+    background-image: radial-gradient(circle at 100% 100%, transparent 0.5px, #ea4835 0.5px, #ea4835 4px, transparent 4px), linear-gradient(to right, #ea4835, #8902ff), radial-gradient(circle at 0% 100%, transparent 0.5px, #ea4835 0.5px, #ea4835 4px, transparent 4px), linear-gradient(to bottom, #ea4835, rgba(255, 255, 255, 0)), radial-gradient(circle at 0% 0%, transparent 0.5px, rgba(255, 255, 255, 0) 0.5px, rgba(255, 255, 255, 0) 4px, transparent 4px), linear-gradient(to left, rgba(255, 255, 255, 0), #8902ff), radial-gradient(circle at 100% 0%, transparent 0.5px, #8902ff 0.5px, #8902ff 4px, transparent 4px), linear-gradient(to top, #8902ff, #ea4835);
+    background-position: top left, top center, top right, center right, bottom right, bottom center, bottom left, center left;
+    background-size: 4px 4px, calc(100% - (2 * 4px)) 0.5px, 4px 4px, 0.5px calc(100% - (2 * 4px));
+    background-repeat: no-repeat;
 }
 
 input::placeholder {
@@ -248,10 +279,11 @@ form a img {
 }
 
 .winner {
-    border: 1.5px solid #7C72C5;
+    border: 2px solid #3f31a5;
     height: 146px;
     max-width: 540px;
     padding: 20px;
+    background-color: #220970;
     border-radius: 16px;
     justify-content: space-between;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
@@ -276,11 +308,10 @@ form a img {
 
 .winner-two .text-one,
 .text-two {
-    color: white;
-    font-size: 19px;
-    font-weight: 500;
-
+    font-size: 18px;
+    color: #CDC6FF;
     letter-spacing: -0.005em;
+    font-weight: 300;
     text-align: left;
 }
 
@@ -315,12 +346,13 @@ form a img {
     color: white;
 }
 
-.how-works p{
+.how-works p {
     font-family: 'Roboto', sans-serif;
     color: #CDC6FF;
     font-size: 15px;
 
 }
+
 .how-works .one {
     height: 336px;
     max-width: 362px;
@@ -501,8 +533,7 @@ form a img {
     background-repeat: no-repeat;
 }
 
-.rules {
-}
+.rules {}
 
 .jackpot .one {
     color: white;
