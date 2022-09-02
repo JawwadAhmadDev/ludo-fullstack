@@ -3,13 +3,9 @@ import { connectWallet } from "../../wallet";
 import {useRecoilState} from 'recoil'
 import { walletState } from "../../state/Wallet";
 import { walletShortFormer } from "../../utils";
-import { copyToClip } from "../../constants";
 
 const NavBar = () => {
   const [walletStateValue, setWalletState] =useRecoilState(walletState) 
-  useEffect(()=>{
-     connectWallet() 
-  })
   return (
     <header id="header-section">
       <div className="overlay">
