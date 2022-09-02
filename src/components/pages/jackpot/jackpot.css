@@ -323,9 +323,11 @@ form a img {
     top: 1380px;
     border-radius: 0px;
 }
-.email_input{
+
+.email_input {
     height: 57px;
 }
+
 .how-works {
     margin: 100px 0px;
     background-image: url(./images/how-works-bg.png);
@@ -546,6 +548,10 @@ form a img {
     text-align: left;
 }
 
+.subscribe {
+    margin-bottom: 40px;
+}
+
 .subscribe .sub_inner {
     background: linear-gradient(99.63deg, #3A069E -32.84%, #3A069E 131.02%);
     border-radius: 30px;
@@ -559,12 +565,14 @@ form a img {
     background-size: contain;
     height: fit-content;
 }
-.grup_bg{
+
+.grup_bg {
     background-size: 321px;
     background-image: url(./images/grupbg.png);
     background-repeat: no-repeat;
     background-position: right;
 }
+
 .sub-heading {
     color: white;
     font-family: Fira Sans;
