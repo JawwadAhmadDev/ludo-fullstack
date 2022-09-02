@@ -1,14 +1,17 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connectWallet, getWalletAddressOrConnect, web3 } from '../../../wallet'
 import "./jackpot.css"
 import CustomCountDown from './CountDown';
-import { toast } from 'react-toastify'; 
+import { toast } from 'react-toastify';
 import { fetchContract, walletShortFormer } from '../../../utils';
 import { useRecoilState } from 'recoil'
 import { walletState } from '../../../state/Wallet';
+import TransectionPendingModal from '../../component/TransectionPendingModal';
 
 
 const Jackpot = () => {
+  const [open, setOpen] = useState(false)
+  const [isCongrate, setIsCongrate] = useState(false)
   const [walletStateValue, setWalletState] = useRecoilState(walletState)
   var contract;
 
@@ -34,13 +37,17 @@ const Jackpot = () => {
 
   const fundJackpot = async (e) => {
     contract = await fetchContract()
-   var  userWallet =  await getWalletAddressOrConnect()
+    var userWallet = await getWalletAddressOrConnect()
     var bnbAmount = 0.1
-    toast("Transection Mining Please wait ", { autoClose: false })
+    toast.info("Transection Mining Please wait ")
+    setOpen(true)
     contract.methods.fundJackpot(0).send({ from: userWallet, value: web3.utils.toWei(bnbAmount.toString()) })
       .then(tx => {
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        setIsCongrate(true)
+        setOpen(false)
         console.log(tx)
-        toast.success("Jackpot funding success !!");
+        toast(<a target="_blank" style={{ color: 'gray' }} href={`https://testnet.bscscan.com/tx/${tx.transactionHash}`}>Funded Success ! .🔗 View Tx On BSC Scan !!</a>, { autoClose: false })
       })
       .catch(err => {
         toast.error(err.message)
@@ -75,7 +82,30 @@ const Jackpot = () => {
 
 
   return (
-    <div className='jackpot_page'>
+    <div className='jackpot_page '>
+      <TransectionPendingModal open={open} setOpen={setOpen} />
+
+      {
+        isCongrate ?
+          <div className='c_overlay'></div> : ''
+      }
+      {
+        isCongrate ?
+
+          <div className='congrate_container' >
+            <div className='congrate'  >
+              <div className="checkmark-circle">
+                <div className="background"></div>
+                <div className="checkmark draw"></div>
+              </div>
+              <h1 style={{ color: '#7000d3' }}>Congratulations!</h1>
+              <p>Your Investment Success !</p>
+              <button className="submit-btn" onClick={e => setIsCongrate(false)} >Continue</button>
+            </div>
+          </div> : ''
+      }
+
+
       <div>
         <nav className="navbar navbar-expand-lg fixed-top">
           <div className="container">
@@ -104,7 +134,7 @@ const Jackpot = () => {
           </div>
         </nav>
         <section className="banner">
-          <div className="container">
+          <div className="container ">
             <div className="mid-text text-center">
               <img src="pimages/mid text.png" className="img-fluid" alt="" />
             </div>

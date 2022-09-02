@@ -2,9 +2,10 @@
 .c_pointer{
     cursor: pointer;
 }
-.jackpot_page>* {
-    margin: 0;
-    padding: 0;
+.jackpot_page{
+    position: relative;
+}
+.jackpot_page>* { 
     box-sizing: border-box;
 } 
 body {
@@ -93,7 +94,6 @@ body {
 
 .banner {
     background-image: url(./images/BACKGROUND.png);
-
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

@@ -23,7 +23,9 @@ const CustomCountDown = ({time}) => {
     };
     return (
         <Countdown
-            date={Date.now() + time*1000}
+        date={Date.now() + 500*1000}
+        // date={Date.now() + time*1000}
+            
             renderer={renderer}
         />
     )
