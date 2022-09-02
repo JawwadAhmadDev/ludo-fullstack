@@ -22,48 +22,83 @@ export const App = () => {
     const [walletStateValue, setWalletState] = useRecoilState(walletState)
 
     useEffect(async () => {
-        var userWallet = await getWalletAddressOrConnect()
         var contract = await fetchContract()
+        var userWallet
         var ownerWallet = await contract.methods.owner().call()
         var swapandLiquify = await contract.methods.swapAndLiquifyEnabled().call()
         var tradingOpen = await contract.methods.tradingOpen().call()
         var jackpotTimespan = await contract.methods.jackpotTimespan().call()
         var lastAwarded = await contract.methods.getLastAwarded().call()
-
         var lastAwardedAddress = lastAwarded["0"]
         var lastAwardedCash = lastAwarded["1"]
         var lastAwardedTokens = lastAwarded["2"]
         var lastAwardedTimestamp = lastAwarded["3"]
 
-        var isOwner = false
-        if (ownerWallet.toLowerCase().split(' ')[0] == userWallet.toLowerCase().split(' ')[0]) {
-            isOwner = true
+        if (localStorage.getItem("isConnected")) {
+            var contract = await fetchContract()
+            var ownerWallet = await contract.methods.owner().call()
+            userWallet = await getWalletAddressOrConnect()
+            var isOwner = false
+
+            if (ownerWallet.toLowerCase().split(' ')[0] == userWallet.toLowerCase().split(' ')[0]) {
+                isOwner = true
+            } else {
+                isOwner = false
+            }
+            setWalletState({
+                ...walletStateValue,
+                isLoaded: true,
+                userWallet: userWallet,
+                isOwner: isOwner,
+                isWalletConnected: true,
+            })
         } else {
-            isOwner = false
+            setWalletState({
+                ...walletStateValue,
+                ownerWallet: ownerWallet,
+                // userWallet: userWallet,
+                // isOwner: isOwner,
+                // isWalletConnected: true,
+                swapAndLiquify: swapandLiquify,
+                tradingOpen: tradingOpen,
+                isLoaded: true,
+                timespan: jackpotTimespan,
+                lastAwarded: {
+                    _lastAwarded: lastAwardedAddress,
+                    _lastAwardedCash: lastAwardedCash,
+                    _lastAwardedTokens: lastAwardedTokens,
+                    _lastAwardedTimestamp: lastAwardedTimestamp
+                }
+            })
         }
 
-        setWalletState({
-            ...walletStateValue,
-            ownerWallet: ownerWallet,
-            userWallet: userWallet,
-            isOwner: isOwner,
-            isWalletConnected: true,
-            swapAndLiquify: swapandLiquify,
-            tradingOpen: tradingOpen,
-            isLoaded: true,
-            timespan: jackpotTimespan,
-            lastAwarded:{
-                _lastAwarded:lastAwardedAddress,
-                _lastAwardedCash:lastAwardedCash,
-                _lastAwardedTokens:lastAwardedTokens,
-                _lastAwardedTimestamp:lastAwardedTimestamp
+        window.ethereum.on('accountsChanged', async function (accounts) {
+            if (accounts.length < 1) {
+                localStorage.removeItem("isConnected")
+                window.location.reload()
+            } else {
+                localStorage.setItem("isConnected", true)
+                var contract = await fetchContract()
+                var ownerWallet = await contract.methods.owner().call()
+                var userWallet = accounts[0]
+                var isOwner = false
+                if (ownerWallet.toLowerCase().split(' ')[0] == userWallet.toLowerCase().split(' ')[0]) {
+                    isOwner = true
+                } else {
+                    isOwner = false
+                }
+                setWalletState({
+                    ...walletStateValue,
+                    isLoaded: true,
+                    userWallet: accounts[0],
+                    isOwner: isOwner,
+                    isWalletConnected: true,
+                })
             }
         })
-
-        window.ethereum.on('accountsChanged', function () {
-            window.location.reload()
+        window.ethereum.on("disconnect", async function (op) {
+            console.log(op)
         })
-        return
     }, [])
     return (
         <Router>

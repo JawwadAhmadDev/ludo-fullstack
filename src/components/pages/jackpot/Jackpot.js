@@ -89,7 +89,7 @@ const Jackpot = () => {
                 <li className="nav-item"><a className="nav-link" href="/">Home</a></li>
                 {
                   walletStateValue.isOwner ?
-                    <li className="nav-item"><a className="nav-link" href="/dashboard">Dashboard</a></li>
+                    <li className="nav-item"><a target='_blank' className="nav-link" href="/dashboard">Dashboard</a></li>
                     : ''
                 }
                 {/* <li className="nav-item"><a className="nav-link" href="#">About</a></li> */}
@@ -99,7 +99,7 @@ const Jackpot = () => {
                 <li className="nav-item"><a className="nav-link" href="#"><img src="pimages/telegram.png" className="mx-2 img-fluid" width="30px" height="30px" alt="" />Telegram</a></li>
               </ul>
               <a href="#" className="header-btn" onClick={() => connectWallet()}>
-                <button className='btn btn-jk-connect '>{walletStateValue.isWalletConnected ? walletShortFormer(walletStateValue.userWallet) : "Connect Wallet"}</button>
+                <button className='btn btn-jk-connect '>  {walletStateValue.isWalletConnected ? walletShortFormer(walletStateValue.userWallet) : "Connect Wallet"}</button>
               </a>
             </div>
           </div>
