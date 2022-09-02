@@ -139,7 +139,7 @@ const Jackpot = () => {
             <div className="mid-text text-center">
               <img src="pimages/mid text.png" className="img-fluid" alt="" />
             </div>
-            <div className="row" style={{padding:'100px 0 '}}>
+            <div className="row" style={{ padding: '100px 0 ' }}>
               <div className="col-lg-5 fast-text">
                 <p className="text-white heading-one cp_font">Earn Big Today!</p>
                 <div className='countdown'>
@@ -157,31 +157,31 @@ const Jackpot = () => {
                 {/* <AuthRequestModal walletAddress={walletStateValue.userWallet} /> */}
               </div>
               <div className=" col-lg-2">
-              </div> 
-                <form className='jkform col-lg-5' action>
-                  <p className="heading-two cp_font">Buy Now</p>
-                  <label className='r_font'>
-                    <img src="pimages/image 5.png" className="img-fluid mt-2 mb-2 mr-2 w-35" alt="Buy Now " />BNB <i className="fa-solid fa-caret-down" />
-                  </label>
-                  <input className='input r_font g_border' type="number" placeholder={25} />
-                  <div className="d-flex mb0i mt-2">
-                    <p className='r_font'>≈ $ 6.21 k</p>
-                    <p className='r_font'>Balance: 0.00</p>
-                  </div>
-                  <div className="mid-arrow">
-                    <img src="pimages/Vector.png" className="img-fluid" alt="" />
-                  </div>
-                  <label htmlFor className='r_font'><img src="pimages/5.png" className="img-fluid mt-2 mb-2 mr-2 w-35" alt="" />GMZ</label> <br />
-                  <input className='input r_font g_border' type="number" placeholder='780.855733385871334857' />
-                  <div className="d-flex  mt-2 mb0i">
-                    <p className='r_font'>≈ $ 6.21 k</p>
-                    <p className='r_font'>Balance: 0.00</p>
-                  </div>
-                  <div className='text-center'>
+              </div>
+              <form className='jkform col-lg-5' action>
+                <p className="heading-two cp_font">Buy Now</p>
+                <label className='r_font'>
+                  <img src="pimages/image 5.png" className="img-fluid mt-2 mb-2 mr-2 w-35" alt="Buy Now " />BNB <i className="fa-solid fa-caret-down" />
+                </label>
+                <input className='input r_font g_border' type="number" placeholder={25} />
+                <div className="d-flex mb0i mt-2">
+                  <p className='r_font'>≈ $ 6.21 k</p>
+                  <p className='r_font'>Balance: 0.00</p>
+                </div>
+                <div className="mid-arrow">
+                  <img src="pimages/Vector.png" className="img-fluid" alt="" />
+                </div>
+                <label htmlFor className='r_font'><img src="pimages/5.png" className="img-fluid mt-2 mb-2 mr-2 w-35" alt="" />GMZ</label> <br />
+                <input className='input r_font g_border' type="number" placeholder='780.855733385871334857' />
+                <div className="d-flex  mt-2 mb0i">
+                  <p className='r_font'>≈ $ 6.21 k</p>
+                  <p className='r_font'>Balance: 0.00</p>
+                </div>
+                <div className='text-center'>
                   <button className='btn queck_buy_btn  cp_font buy_coins' >Buy Coins Now</button>
-                  </div>
-                  <p className="fo-last my-3">Charts | Buy Crypto</p>
-                </form> 
+                </div>
+                <p className="fo-last my-3">Charts | Buy Crypto</p>
+              </form>
             </div>
           </div>
         </section>
@@ -347,20 +347,21 @@ const Jackpot = () => {
         </section>
         <section className="subscribe">
           <div className="container">
-            <div className="row">
-              <div className="col-lg-4">
-                <img src="pimages/call-to-action-left.png" className="img-fluid" alt="" />
-              </div>
-              <div className="col-lg-6 my-5">
-                <p className="sub-heading cp_font">Subscribe Us</p>
-                <p className="sub-p">To Get Exclusive Benefits And
-                  Win Rewards</p>
-                <div className='email_form'>
-                  <input className='input' type="email" placeholder="Enter your email" />
-                  <a href="" className='email_btn'><img src="pimages/email-btn.png" className="img-fluid" alt="" /></a>
+            <div className='sub_inner'>
+              <div className=" row grup_bg">
+                <div className="col-lg-5">
+                  <img src="pimages/call-to-action-left.png" className="img-fluid" alt="" />
+                </div>
+                <div className="col-lg-7 my-5  ">
+                  <p className="sub-heading cp_font">Subscribe Us</p>
+                  <p className="sub-p">To Get Exclusive Benefits And
+                    Win Rewards</p>
+                  <div className='email_form'>
+                    <input className='input email_input' type="email" placeholder="Enter your email" />
+                    <a href="" className='email_btn'><img src="pimages/email-btn.png" className="img-fluid" alt="" /></a>
+                  </div>
                 </div>
               </div>
-              <div className="col-lg-2"> </div>
             </div>
           </div>
         </section>
