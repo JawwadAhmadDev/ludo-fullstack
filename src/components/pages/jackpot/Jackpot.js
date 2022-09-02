@@ -2,9 +2,7 @@ import React, { useEffect } from 'react'
 import { connectWallet, web3 } from '../../../wallet'
 import "./jackpot.css"
 import CustomCountDown from './CountDown';
-import { toast } from 'react-toastify';
-import { backendURL } from '../../../constants';
-import axios from 'axios'
+import { toast } from 'react-toastify'; 
 import { fetchContract, walletShortFormer } from '../../../utils';
 import { useRecoilState } from 'recoil'
 import { walletState } from '../../../state/Wallet';

@@ -4,7 +4,6 @@ import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
 import { Input } from 'reactstrap';
 import { useState } from 'react';
-import axios from 'axios';
 import {  MAX_PCT } from '../../constants';
 import { toast } from 'react-toastify'
 import { fetchContract } from '../../utils';
