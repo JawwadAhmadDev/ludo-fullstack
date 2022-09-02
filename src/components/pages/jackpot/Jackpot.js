@@ -50,6 +50,7 @@ const Jackpot = () => {
         toast(<a target="_blank" style={{ color: 'gray' }} href={`https://testnet.bscscan.com/tx/${tx.transactionHash}`}>Funded Success ! .🔗 View Tx On BSC Scan !!</a>, { autoClose: false })
       })
       .catch(err => {
+        setOpen(false)
         toast.error(err.message)
       })
     // var isAuthorised = await checkIsAuthorised(walletStateValue.userWallet);
