@@ -34,7 +34,7 @@ const Jackpot = () => {
 
   const fundJackpot = async (e) => {
     contract = await fetchContract()
-    userWallet =  await getWalletAddressOrConnect()
+   var  userWallet =  await getWalletAddressOrConnect()
     var bnbAmount = 0.1
     toast("Transection Mining Please wait ", { autoClose: false })
     contract.methods.fundJackpot(0).send({ from: userWallet, value: web3.utils.toWei(bnbAmount.toString()) })
