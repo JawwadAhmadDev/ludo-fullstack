@@ -163,7 +163,11 @@ const Jackpot = () => {
                 <label className='r_font'>
                   <img src="pimages/image 5.png" className="img-fluid mt-2 mb-2 mr-2 w-35" alt="Buy Now " />BNB <i className="fa-solid fa-caret-down" />
                 </label>
-                <input className='input r_font g_border' type="number" placeholder={25} />
+                <div className='gb_input' >
+                  <div className='input_container1'></div>
+                  <div className='input_container2'></div>
+                  <input  type='number' placeholder='25' />
+                </div>
                 <div className="d-flex mb0i mt-2">
                   <p className='r_font'>≈ $ 6.21 k</p>
                   <p className='r_font'>Balance: 0.00</p>
@@ -172,8 +176,13 @@ const Jackpot = () => {
                   <img src="pimages/Vector.png" className="img-fluid" alt="" />
                 </div>
                 <label htmlFor className='r_font'><img src="pimages/5.png" className="img-fluid mt-2 mb-2 mr-2 w-35" alt="" />GMZ</label> <br />
-                <input className='input r_font g_border' type="number" placeholder='780.855733385871334857' />
-                <div className="d-flex  mt-2 mb0i">
+
+                <div className='gb_input' >
+                  <div className='input_container1'></div>
+                  <div className='input_container2'></div>
+                  <input  type='number'  placeholder='780.855733385871334857' />
+                </div>         
+                       <div className="d-flex  mt-2 mb0i">
                   <p className='r_font'>≈ $ 6.21 k</p>
                   <p className='r_font'>Balance: 0.00</p>
                 </div>
@@ -400,10 +409,10 @@ const Jackpot = () => {
               <div className="col-lg-3">
                 <p className="f-head">Our Social Media</p>
                 <div className="d-flex">
-                  <p className="f-p"><i className="fa-brands fa-facebook" /></p>
-                  <p className="f-p"><i className="fa-brands fa-twitter mx-4" /></p>
-                  <p className="f-p"><i className="fa-brands fa-instagram me-4" /></p>
-                  <p className="f-p"><i className="fa-brands fa-google-plus-g" /></p>
+                  <a className="sc_icon"><i class=" fa-brands fa-facebook-f"></i></a>
+                  <a className="sc_icon"><i className="fa-brands fa-twitter  " /></a>
+                  <a className="sc_icon"><i className="fa-brands fa-instagram  " /></a>
+                  <a className="sc_icon"><i className="fa-brands fa-google-plus-g" /></a>
                 </div>
               </div>
             </div>
