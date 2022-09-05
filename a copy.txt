@@ -1,0 +1,3 @@
+backend url :https://ludo-ol.herokuapp.com/api/wallet
+Issues:
+JackpotHardLimit
