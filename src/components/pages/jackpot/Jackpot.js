@@ -7,6 +7,7 @@ import { fetchContract, walletShortFormer } from '../../../utils';
 import { useRecoilState } from 'recoil'
 import { walletState } from '../../../state/Wallet';
 import TransectionPendingModal from '../../component/TransectionPendingModal';
+import { Link } from 'react-router-dom';
 
 
 const Jackpot = () => {
@@ -116,17 +117,17 @@ const Jackpot = () => {
             </button>
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
               <ul className="navbar-nav m-auto mb-2 mb-lg-0">
-                <li className="nav-item"><a className="nav-link" href="/">Home</a></li>
+                <li className="nav-item"><Link className="nav-link" to="/">Home</Link></li>
                 {
                   walletStateValue.isOwner ?
-                    <li className="nav-item"><a target='_blank' className="nav-link" href="/dashboard">Dashboard</a></li>
+                    <li className="nav-item"><Link  className="nav-link" to="/dashboard">Dashboard</Link></li>
                     : ''
                 }
                 {/* <li className="nav-item"><a className="nav-link" href="#">About</a></li> */}
-                <li className="nav-item"><a className="nav-link" href="/space-miner">Space Miner</a></li>
-                <li className="nav-item"><a className="nav-link" href="#">Tournaments</a></li>
-                <li className="nav-item"><a className="nav-link" href="#">Contact us</a></li>
-                <li className="nav-item"><a className="nav-link" href="#"><img src="pimages/telegram.png" className="mx-2 img-fluid" width="30px" height="30px" alt="" />Telegram</a></li>
+                <li className="nav-item"><Link className="nav-link" to="/space-miner">Space Miner</Link></li>
+                <li className="nav-item"><Link className="nav-link" to="#">Tournaments</Link></li>
+                <li className="nav-item"><Link className="nav-link" to="#">Contact us</Link></li>
+                <li className="nav-item"><Link className="nav-link" to="#"><img src="pimages/telegram.png" className="mx-2 img-fluid" width="30px" height="30px" alt="" />Telegram</Link></li>
               </ul>
               <a href="#" className="header-btn" onClick={() => connectWallet()}>
                 <button className='btn btn-jk-connect '>  {walletStateValue.isWalletConnected ? walletShortFormer(walletStateValue.userWallet) : "Connect Wallet"}</button>

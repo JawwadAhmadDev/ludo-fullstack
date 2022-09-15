@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import {
-    BrowserRouter as Router,
+    BrowserRouter,
     Routes,
     Route,
 
@@ -13,7 +13,7 @@ import Jackpot from "./pages/jackpot/Jackpot";
 import SpaceMiner from "./pages/spaceMiner/SpaceMiner";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import { getWalletAddressOrConnect } from "../wallet";
-import { fetchContract, walletShortFormer } from "../utils";
+import { fetchContract } from "../utils";
 import { useRecoilState } from 'recoil'
 import { walletState } from "../state/Wallet";
 import DuplicateUser from "./DuplicateUser";
@@ -24,7 +24,10 @@ export const App = () => {
     useEffect(async () => {
         var contract = await fetchContract()
         var userWallet
+        console.log(contract)
         var ownerWallet = await contract.methods.owner().call()
+        console.log("")
+
         var swapandLiquify = await contract.methods.swapAndLiquifyEnabled().call()
         var tradingOpen = await contract.methods.tradingOpen().call()
         var jackpotTimespan = await contract.methods.jackpotTimespan().call()
@@ -33,7 +36,19 @@ export const App = () => {
         var lastAwardedCash = lastAwarded["1"]
         var lastAwardedTokens = lastAwarded["2"]
         var lastAwardedTimestamp = lastAwarded["3"]
-
+        console.log(
+            contract,
+            userWallet,
+            ownerWallet,
+            swapandLiquify,
+            tradingOpen,
+            jackpotTimespan,
+            lastAwarded,
+            lastAwardedAddress,
+            lastAwardedCash,
+            lastAwardedTokens,
+            lastAwardedTimestamp
+        );
         if (localStorage.getItem("isConnected")) {
             var contract = await fetchContract()
             var ownerWallet = await contract.methods.owner().call()
@@ -101,7 +116,7 @@ export const App = () => {
         })
     }, [])
     return (
-        <Router>
+        <BrowserRouter>
             <div>
                 {
                     walletStateValue.isLoaded ?
@@ -126,6 +141,6 @@ export const App = () => {
                         </div>
                 }
             </div>
-        </Router>
+        </BrowserRouter>
     )
 }

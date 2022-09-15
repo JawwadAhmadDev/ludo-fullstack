@@ -17,15 +17,19 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
+
 .gb_input {
     position: relative;
     height: 45px;
 }
-.gb_input input{
+
+.gb_input input {
     position: absolute;
     height: 43px;
     width: 100%;
-    border-image-source: radial-gradient(88.71% 107.03% at 55% 41.24%, #EA4835 0%, #561D93 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+    border-image-source: radial-gradient(88.71% 107.03% at 55% 41.24%, #EA4835 0%, #561D93 100%)
+        /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */
+    ;
     padding: 0px 30px;
     outline: 0;
     top: 1px;
@@ -35,6 +39,7 @@ body {
     border: 0;
     border-radius: 50px;
 }
+
 .input_container1 {
     position: absolute;
     width: 100%;
@@ -43,10 +48,11 @@ body {
     height: 50%;
     background: rgb(34, 9, 112);
     background: linear-gradient(90deg, #220970 0%, #9b352a 100%);
-    
+
     border-top-right-radius: 20px;
     border-top-left-radius: 20px;
 }
+
 .input_container2 {
     width: 100%;
     position: absolute;
@@ -54,8 +60,8 @@ body {
     left: 0;
     height: 50%;
     background: rgb(34, 9, 112);
-    background: linear-gradient(90deg, #9b352a  0%, #220970 100%);
-    
+    background: linear-gradient(90deg, #9b352a 0%, #220970 100%);
+
     border-bottom-right-radius: 20px;
     border-bottom-left-radius: 20px;
 }
